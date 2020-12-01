@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="lblIdentifiBuscar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="txtIdentifiBuscar" min="-2" pref="120" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                      <Component id="btnBuscar" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="spr3" alignment="0" min="-2" pref="680" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lblDescripcion" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="585" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lblServicio" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="txtServicio" min="-2" pref="212" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="lblCodigo" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="txtCodigo" min="-2" pref="98" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="lblDatosServicio" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="spr2" alignment="0" min="-2" pref="680" max="-2" attributes="0"/>
+                  <Component id="lblDatosPaciente" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lblNro" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="txtNro" min="-2" pref="98" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <Component id="lblFecha" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="txtDia" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtMes" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtAno" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="spr1" alignment="0" min="-2" pref="680" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblNombre" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDireccion" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txtDireccion" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Component id="txtNombre" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="lblTelefono" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtTelefono" min="-2" pref="98" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="lblAfilicion" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="txtAfiliacion" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="lblIdentificacion" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              <Component id="txtIdentificacion" min="-2" pref="200" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace pref="37" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="18" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblIdentifiBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtIdentifiBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="spr3" min="-2" pref="10" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblNro" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblFecha" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtNro" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtDia" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtMes" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtAno" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="spr1" min="-2" pref="10" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="lblDatosPaciente" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblIdentificacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtIdentificacion" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblDireccion" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblAfilicion" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtDireccion" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtAfiliacion" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="spr2" min="-2" pref="10" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="lblDatosServicio" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblServicio" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtServicio" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblDescripcion" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="lblTelefono">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Telefono:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblDescripcion">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Descripci&#xf3;n:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblAfilicion">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tipo Afiliaci&#xf3;n:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtNombre">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombreActionPerformed"/>
+      </Events>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="txtaDescripcion">
+          <Properties>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JTextField" name="txtIdentificacion">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtIdentificacionActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JSeparator" name="spr3">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtDireccion">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDireccionActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtTelefono">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTelefonoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtNro">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNroActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtDia">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Dia"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="/"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtMes">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Mes"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel10">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="/"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtAno">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="A&#xf1;o"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblNro">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Numero Registro:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSeparator" name="spr1">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblFecha">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Fecha de Ingreso:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSeparator" name="spr2">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblDatosServicio">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Datos del Servicio:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblIdentificacion">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="N&#xfa;mero Identificai&#xf3;n:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblServicio">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Servicio:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblNombre">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nombre:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblDatosPaciente">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Datos Paciente:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblCodigo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="C&#xf3;digo:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblDireccion">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Direcci&#xf3;n:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtCodigo">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCodigoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblIdentifiBuscar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="N&#xfa;mero de Identificaci&#xf3;n:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtIdentifiBuscar">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtIdentifiBuscarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnBuscar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Buscar"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtAfiliacion">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtServicio">
+    </Component>
+  </SubComponents>
+</Form>
