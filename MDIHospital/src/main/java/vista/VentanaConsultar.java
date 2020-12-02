@@ -37,6 +37,8 @@ public class VentanaConsultar extends javax.swing.JInternalFrame {
         lblTotal = new javax.swing.JLabel();
         txtTotal = new javax.swing.JTextField();
 
+        setClosable(true);
+
         tblConsulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -46,7 +48,7 @@ public class VentanaConsultar extends javax.swing.JInternalFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false, false

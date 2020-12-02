@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
+  <Properties>
+    <Property name="closable" type="boolean" value="true"/>
+  </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
   </SyntheticProperties>
@@ -64,7 +67,7 @@
                 <Column editable="false" title="Telefono" type="java.lang.String"/>
                 <Column editable="false" title="Afiliaci&#xf3;n" type="java.lang.String"/>
                 <Column editable="false" title="Servicio" type="java.lang.String"/>
-                <Column editable="false" title="Pago" type="java.lang.String"/>
+                <Column editable="false" title="Pago" type="java.lang.Double"/>
               </Table>
             </Property>
           </Properties>

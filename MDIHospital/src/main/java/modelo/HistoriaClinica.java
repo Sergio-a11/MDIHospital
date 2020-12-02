@@ -104,17 +104,17 @@ public class HistoriaClinica {
             switch (dtsPaciente.afiliacion()) {
                 case 'A':
                     for (int i = 0; i < dtsLab.getExamenes().size(); i++) {
-                        sum+=dtsLab.getExamenes().get(i).getValor()*0.10;
+                        sum+=dtsLab.getExamenes().get(i).getValor()*0.1;
                     }
                     return sum;
                 case 'B':
                     for (int i = 0; i < dtsLab.getExamenes().size(); i++) {
-                        sum+=dtsLab.getExamenes().get(i).getValor()*0.50;
+                        sum+=dtsLab.getExamenes().get(i).getValor()*0.5;
                     }
                     return sum;
                 case 'C':
                     for (int i = 0; i < dtsLab.getExamenes().size(); i++) {
-                        sum+=dtsLab.getExamenes().get(i).getValor()*0.100;
+                        sum+=dtsLab.getExamenes().get(i).getValor()*1;
                     }
                     return sum;
                 default:
@@ -126,7 +126,7 @@ public class HistoriaClinica {
     
     public double valorHOPS(Fecha ingreso, Fecha salida){
         int dias = 0;
-        if((((salida.getMm()-ingreso.getMm())*30)-60)> 0){
+        if((((salida.getMm()-ingreso.getMm())*30)-60)> 1){
             dias = (((salida.getMm()-ingreso.getMm())*30)-60)+(salida.getDd()-(30-ingreso.getDd()));
         }else{
             dias = (salida.getDd()-(30-ingreso.getDd()));

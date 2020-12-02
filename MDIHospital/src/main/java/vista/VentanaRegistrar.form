@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
+  <Properties>
+    <Property name="closable" type="boolean" value="true"/>
+  </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
   </SyntheticProperties>
@@ -58,7 +61,7 @@
                               <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="txtAno" min="-2" pref="47" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnFechaSistema" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="spr1" alignment="0" min="-2" pref="680" max="-2" attributes="0"/>
@@ -156,7 +159,7 @@
               <Component id="spr3" min="-2" pref="10" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnRegistrar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="15" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -269,11 +272,6 @@
         <Property name="text" type="java.lang.String" value="A&#xf1;o"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnFechaSistema">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Fecha Del Sistema"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JSeparator" name="spr2">
     </Component>
     <Component class="javax.swing.JLabel" name="lblDatosServicio">
@@ -339,6 +337,11 @@
     <Component class="javax.swing.JButton" name="btnRegistrar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Registrar"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnFechaSistema">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Fecha Sistema"/>
       </Properties>
     </Component>
   </SubComponents>

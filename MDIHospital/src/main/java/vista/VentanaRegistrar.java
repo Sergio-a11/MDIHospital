@@ -55,7 +55,6 @@ public class VentanaRegistrar extends javax.swing.JInternalFrame {
         txtMes = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         txtAno = new javax.swing.JTextField();
-        btnFechaSistema = new javax.swing.JButton();
         spr2 = new javax.swing.JSeparator();
         lblDatosServicio = new javax.swing.JLabel();
         lblServicio = new javax.swing.JLabel();
@@ -67,6 +66,9 @@ public class VentanaRegistrar extends javax.swing.JInternalFrame {
         txtaDescripcion = new javax.swing.JTextArea();
         spr3 = new javax.swing.JSeparator();
         btnRegistrar = new javax.swing.JButton();
+        btnFechaSistema = new javax.swing.JButton();
+
+        setClosable(true);
 
         lblNro.setText("Numero Registro:");
 
@@ -126,8 +128,6 @@ public class VentanaRegistrar extends javax.swing.JInternalFrame {
 
         txtAno.setText("Año");
 
-        btnFechaSistema.setText("Fecha Del Sistema");
-
         lblDatosServicio.setText("Datos del Servicio:");
 
         lblServicio.setText("Servicio:");
@@ -154,6 +154,8 @@ public class VentanaRegistrar extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(txtaDescripcion);
 
         btnRegistrar.setText("Registrar");
+
+        btnFechaSistema.setText("Fecha Sistema");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -196,7 +198,7 @@ public class VentanaRegistrar extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtAno, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnFechaSistema))
                             .addComponent(spr1, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
@@ -276,7 +278,7 @@ public class VentanaRegistrar extends javax.swing.JInternalFrame {
                 .addComponent(spr3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRegistrar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();

@@ -26,6 +26,9 @@ public class Controlador implements ActionListener {
     VentanaRegistrar frmRegistrar;
     VentanaExamenes frmExamenes;
     VentanaConsultar frmConsultar;
+    ArrayList<Examen> examenes;
+    Hospitalizacion auxH;
+    Laboratorios auxL;
 
     public Controlador() {
         this.objR = new Registros();
@@ -49,6 +52,9 @@ public class Controlador implements ActionListener {
         this.frmExamenes.getBtnGrupo().add(frmExamenes.getBtnOptometria());
         this.frmExamenes.getBtnGrupo().add(frmExamenes.getBtnOdontologia());
         this.frmExamenes.getBtnGrupo().add(frmExamenes.getBtnCorprologico());
+        examenes = new ArrayList<Examen>();
+        auxH = new Hospitalizacion();
+        auxL = new Laboratorios();
     }
     
     public void iniciar(){
@@ -103,7 +109,7 @@ public class Controlador implements ActionListener {
                break;
             }
             case 2:{
-               ArrayList<Examen> examenes = null; 
+                
                abrirVentana(frmExamenes);
                if(ae.getSource() == frmExamenes.getBtnAgregar()){
                    if(frmExamenes.getBtnSangre().isSelected()){
@@ -123,6 +129,7 @@ public class Controlador implements ActionListener {
                    }
                }
                 objS = new Laboratorios(examenes,frmRegistrar.getTxtCodigo().getText(), "Laboratorio", frmRegistrar.getTxtaDescripcion().getText());
+            auxL = (Laboratorios)objS;
             break;
             }
             case 3:{
@@ -131,6 +138,8 @@ public class Controlador implements ActionListener {
                                                      Integer.parseInt(JOptionPane.showInputDialog(frmRegistrar,"Mes de salida:","Ingrese fecha de salida",1)),
                                                      Integer.parseInt(JOptionPane.showInputDialog(frmRegistrar,"Año de salida:","Ingrese fecha de salida",1))), 
                                            frmRegistrar.getTxtCodigo().getText(), "Hospitalizacion", frmRegistrar.getTxtaDescripcion().getText());
+                auxH = (Hospitalizacion) objS;
+            break;    
             }
         }
         objR.getListaH().get(objR.getListaH().size()-1).setDtsServicio(objS);
@@ -140,6 +149,7 @@ public class Controlador implements ActionListener {
     public void agregarDatos(JTable tabla)
     {
         String fig = "", ser = "";
+        double aux1 = 0;
         DefaultTableModel plantilla = (DefaultTableModel) tabla.getModel();
         plantilla.setRowCount(0);
         for(int i=0; i<objR.getListaH().size(); i++)
@@ -177,13 +187,22 @@ public class Controlador implements ActionListener {
             {
                 ser = "Vacunación";
             }
+            
+            if(objR.getListaH().get(i).getDtsServicio() instanceof CitaMedGenr || objR.getListaH().get(i).getDtsServicio() instanceof Vacunacion){
+                aux1 = objR.getListaH().get(i).valor();
+            }else if(objR.getListaH().get(i).getDtsServicio() instanceof Laboratorios){
+                aux1 = objR.getListaH().get(i).valorLAB(auxL.getExamenes());
+            }else if(objR.getListaH().get(i).getDtsServicio() instanceof Hospitalizacion){
+                aux1 = objR.getListaH().get(i).valorHOPS(auxH.getIngreso(),auxH.getSalida());
+            }
             Object datos[] = {objR.getListaH().get(i).getNroHistoria(),
                               objR.getListaH().get(i).getFecha().toString(),
                               objR.getListaH().get(i).getDtsPaciente().getNombre(),
                               objR.getListaH().get(i).getDtsPaciente().getIdentificacion(),
                               objR.getListaH().get(i).getDtsPaciente().getDireccion(),
                               objR.getListaH().get(i).getDtsPaciente().getTelefono(),
-                              fig, ser, "Nulo"};
+                              fig, ser, 
+                              aux1};
             plantilla.addRow(datos);
         }
     }

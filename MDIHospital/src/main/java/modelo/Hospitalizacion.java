@@ -24,6 +24,23 @@ public class Hospitalizacion extends Servicio{
         this.Ingreso = new Fecha();
         this.Salida = new Fecha();
     }
+
+    public Fecha getIngreso() {
+        return Ingreso;
+    }
+
+    public void setIngreso(Fecha Ingreso) {
+        this.Ingreso = Ingreso;
+    }
+
+    public Fecha getSalida() {
+        return Salida;
+    }
+
+    public void setSalida(Fecha Salida) {
+        this.Salida = Salida;
+    }
+    
     
     
     @Override
