@@ -50,7 +50,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         LabelDiseño.setText("Diseñado por: Daniel Torres y Sergio Cruz");
         pndEscritorio.add(LabelDiseño);
-        LabelDiseño.setBounds(240, 270, 240, 30);
+        LabelDiseño.setBounds(300, 280, 240, 30);
 
         MainMenuRegistrar.setText("Registrar");
 
@@ -86,7 +86,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(pndEscritorio, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pndEscritorio, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
