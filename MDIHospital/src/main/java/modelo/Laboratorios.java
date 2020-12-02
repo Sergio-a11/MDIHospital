@@ -23,11 +23,15 @@ public class Laboratorios extends Servicio{
         super();
         this.examenes = new ArrayList<Examen>();
     }
-    
-    public double valorExamen(int i){
-       return this.examenes.get(i).getValor();
+
+    public ArrayList<Examen> getExamenes() {
+        return examenes;
     }
-    
+
+    public void setExamenes(ArrayList<Examen> examenes) {
+        this.examenes = examenes;
+    }
+
     @Override
     public String tiposervicio() {
         return "Laboratorio";

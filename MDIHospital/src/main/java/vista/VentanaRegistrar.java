@@ -133,6 +133,11 @@ public class VentanaRegistrar extends javax.swing.JInternalFrame {
         lblServicio.setText("Servicio:");
 
         cmbTipoServicio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cita Médica General", "Vacunación", "Laboratorios", "Hospitalización" }));
+        cmbTipoServicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbTipoServicioActionPerformed(evt);
+            }
+        });
 
         lblCodigo.setText("Código:");
 
@@ -300,6 +305,10 @@ public class VentanaRegistrar extends javax.swing.JInternalFrame {
     private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodigoActionPerformed
+
+    private void cmbTipoServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoServicioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbTipoServicioActionPerformed
 
     public JButton getBtnFechaSistema() {
         return btnFechaSistema;

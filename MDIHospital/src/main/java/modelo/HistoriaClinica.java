@@ -5,6 +5,8 @@
  */
 package modelo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author dadxc
@@ -65,51 +67,82 @@ public class HistoriaClinica {
     }
     
     public double valor(){
+        
         if(dtsServicio.tiposervicio().equalsIgnoreCase("Cita Medicina General")){
-            if(dtsPaciente.afiliacion()=='A'){
-                return 5000;
-            }else if(dtsPaciente.afiliacion()=='B'){
-                return 10000;
-            }else if(dtsPaciente.afiliacion()=='C'){
-                return 15000;
-            }else{
-                return 0;
+            switch (dtsPaciente.afiliacion()) {
+                case 'A':
+                    return 5000;
+                case 'B':
+                    return 10000;
+                case 'C':
+                    return 15000;
+                default:
+                    return 0;
             }
         }
         if(dtsServicio.tiposervicio().equalsIgnoreCase("Vacunacion")){
-            if(dtsPaciente.afiliacion()=='A'){
-                return 5000;
-            }else if(dtsPaciente.afiliacion()=='B'){
-                return 10000;
-            }else if(dtsPaciente.afiliacion()=='C'){
-                return 20000;
-            }else{
-                return 0;
+            switch (dtsPaciente.afiliacion()) {
+                case 'A':
+                    return 5000;
+                case 'B':
+                    return 10000;
+                case 'C':
+                    return 20000;
+                default:
+                    return 0;
             }
         }
-       /* if(dtsServicio.tiposervicio().equalsIgnoreCase("Laboratorios")){
-            Laboratorios dtsLab = new Laboratorios();
-            if(dtsPaciente.afiliacion()=='A'){
-
-            }else if(dtsPaciente.afiliacion()=='B'){
-                return 10000;
-            }else if(dtsPaciente.afiliacion()=='C'){
-                return 15000;
-            }else{
-                return 0;
+        
+        
+        return 0;
+    }
+    
+    public double valorLAB(ArrayList<Examen> examenes){
+        double sum =0;
+        if(dtsServicio.tiposervicio().equalsIgnoreCase("Laboratorios")){
+            Laboratorios dtsLab = new Laboratorios(examenes, dtsServicio.getCodigo(), dtsServicio.getNombre(), dtsServicio.getDescripcion());
+            switch (dtsPaciente.afiliacion()) {
+                case 'A':
+                    for (int i = 0; i < dtsLab.getExamenes().size(); i++) {
+                        sum+=dtsLab.getExamenes().get(i).getValor()*0.10;
+                    }
+                    return sum;
+                case 'B':
+                    for (int i = 0; i < dtsLab.getExamenes().size(); i++) {
+                        sum+=dtsLab.getExamenes().get(i).getValor()*0.50;
+                    }
+                    return sum;
+                case 'C':
+                    for (int i = 0; i < dtsLab.getExamenes().size(); i++) {
+                        sum+=dtsLab.getExamenes().get(i).getValor()*0.100;
+                    }
+                    return sum;
+                default:
+                    return 0;
             }
-        }*/
-        /*if(dtsServicio.tiposervicio().equalsIgnoreCase("Cita Medicina General")){
-            if(dtsPaciente.afiliacion()=='A'){
-                return 5000;
-            }else if(dtsPaciente.afiliacion()=='B'){
-                return 10000;
-            }else if(dtsPaciente.afiliacion()=='C'){
-                return 15000;
-            }else{
-                return 0;
+        }
+        return 0;
+    }
+    
+    public double valorHOPS(Fecha ingreso, Fecha salida){
+        int dias = 0;
+        if((((salida.getMm()-ingreso.getMm())*30)-60)> 0){
+            dias = (((salida.getMm()-ingreso.getMm())*30)-60)+(salida.getDd()-(30-ingreso.getDd()));
+        }else{
+            dias = (salida.getDd()-(30-ingreso.getDd()));
+        }
+        if(dtsServicio.tiposervicio().equalsIgnoreCase("Cita Medicina General")){
+            switch (dtsPaciente.afiliacion()) {
+                case 'A':
+                    return dias*30000;
+                case 'B':
+                    return dias*40000;
+                case 'C':
+                    return dias*70000;
+                default:
+                    return dias*20000;
             }
-        }*/
+        }
         return 0;
     }
 }
