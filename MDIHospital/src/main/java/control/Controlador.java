@@ -39,12 +39,12 @@ public class Controlador implements ActionListener {
         frmPrincipal.getPndEscritorio().add(frmRegistrar);
         frmPrincipal.getPndEscritorio().add(frmExamenes);
         frmPrincipal.getPndEscritorio().add(frmConsultar);
-        //frmPrincipal.getPndEscritorio().add(frmBuscar);
+        //frmPrincipal.getPndEscritorio().add(frmBuscar);//En desarrollo
         this.frmPrincipal.getOpcmRegistrar().addActionListener(this);
         this.frmPrincipal.getOpcmConsultar().addActionListener(this);
         this.frmPrincipal.getOpcmBuscar().addActionListener(this);
         this.frmPrincipal.getOpcmSalir().addActionListener(this);
-        this.frmRegistrar.getBtnFechaSistema().addActionListener(this);
+        this.frmRegistrar.getBtnFechaSistema().addActionListener(this);//En desarrollo
         this.frmRegistrar.getBtnRegistrar().addActionListener(this);
         this.frmExamenes.getBtnAgregar().addActionListener(this);
         this.frmExamenes.getBtnGrupo().add(frmExamenes.getBtnSangre());
@@ -193,7 +193,8 @@ public class Controlador implements ActionListener {
             }else if(objR.getListaH().get(i).getDtsServicio() instanceof Laboratorios){
                 aux1 = objR.getListaH().get(i).valorLAB(auxL.getExamenes());
             }else if(objR.getListaH().get(i).getDtsServicio() instanceof Hospitalizacion){
-                aux1 = objR.getListaH().get(i).valorHOPS(auxH.getIngreso(),auxH.getSalida());
+                aux1 = 0;//En desarrollo
+                //aux1 = objR.getListaH().get(i).valorHOPS(null,null);
             }
             Object datos[] = {objR.getListaH().get(i).getNroHistoria(),
                               objR.getListaH().get(i).getFecha().toString(),
