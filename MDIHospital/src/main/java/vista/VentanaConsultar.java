@@ -42,14 +42,14 @@ public class VentanaConsultar extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Nro", "Fecha", "Nombre", "Identificación", "Dirección", "Telefono", "Tipo", "Servicio", "Laboratorio", "Pago"
+                "Nro", "Fecha", "Nombre", "Identificación", "Dirección", "Telefono", "Afiliación", "Servicio", "Pago"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
