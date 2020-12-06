@@ -34,7 +34,17 @@ public class Laboratorios extends Servicio{
 
     @Override
     public String tiposervicio() {
-        return "Laboratorio";
+        return "Laboratorios";
     }
+
+    @Override
+    public String toString() {
+        String msj = "";
+        for (int i = 0; i < examenes.size(); i++) {
+            msj+=examenes.get(i).toString();
+        }
+        return msj;
+    }
+    
     
 }

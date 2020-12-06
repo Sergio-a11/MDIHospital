@@ -61,7 +61,7 @@ public class Examen {
 
     @Override
     public String toString() {
-        return "Examen" + "\nCod=" + Cod + "\nnombre:" + nombre + "\ndescripcion:" + descripcion + "\nvalor:" + valor;
+        return "\nExamen" + "\nCod=" + Cod + "\nnombre:" + nombre + "\ndescripcion:" + descripcion + "\nvalor:" + valor;
     }
     
     

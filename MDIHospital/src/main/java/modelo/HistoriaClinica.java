@@ -97,31 +97,31 @@ public class HistoriaClinica {
         return 0;
     }
     
-    public double valorLAB(ArrayList<Examen> examenes){
+    public double valorLAB(Laboratorios lab){
         double sum =0;
         if(dtsServicio.tiposervicio().equalsIgnoreCase("Laboratorios")){
-            Laboratorios dtsLab = new Laboratorios(examenes, dtsServicio.getCodigo(), dtsServicio.getNombre(), dtsServicio.getDescripcion());
+            Laboratorios dtsLab = lab;
             switch (dtsPaciente.afiliacion()) {
                 case 'A':
                     for (int i = 0; i < dtsLab.getExamenes().size(); i++) {
                         sum+=dtsLab.getExamenes().get(i).getValor()*0.1;
                     }
-                    return sum;
+                break;    
                 case 'B':
                     for (int i = 0; i < dtsLab.getExamenes().size(); i++) {
                         sum+=dtsLab.getExamenes().get(i).getValor()*0.5;
                     }
-                    return sum;
+                    break;
                 case 'C':
                     for (int i = 0; i < dtsLab.getExamenes().size(); i++) {
                         sum+=dtsLab.getExamenes().get(i).getValor()*1;
                     }
-                    return sum;
+                    break;
                 default:
-                    return 0;
+                    return sum; 
             }
         }
-        return 0;
+        return sum;
     }
     
     public double valorHOPS(Fecha ingreso, Fecha salida){

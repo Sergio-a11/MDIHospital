@@ -109,27 +109,11 @@ public class Controlador implements ActionListener {
                break;
             }
             case 2:{
-                
                abrirVentana(frmExamenes);
-               if(ae.getSource() == frmExamenes.getBtnAgregar()){
-                   if(frmExamenes.getBtnSangre().isSelected()){
-                       examenes.add(new Examen("101","Sangre",frmExamenes.getTxtDescripcion().getText(),12000));
-                   }
-                   if(frmExamenes.getBtnOrina().isSelected()){
-                       examenes.add(new Examen("102","Orina",frmExamenes.getTxtDescripcion().getText(),10000));
-                   }
-                   if(frmExamenes.getBtnOrina().isSelected()){
-                       examenes.add(new Examen("103","Cropológico",frmExamenes.getTxtDescripcion().getText(),15000));
-                   }
-                   if(frmExamenes.getBtnOrina().isSelected()){
-                       examenes.add(new Examen("104","Optometría",frmExamenes.getTxtDescripcion().getText(),35000));
-                   }
-                   if(frmExamenes.getBtnOrina().isSelected()){
-                       examenes.add(new Examen("105","Odontología",frmExamenes.getTxtDescripcion().getText(),50000));
-                   }
-               }
+               
                 objS = new Laboratorios(examenes,frmRegistrar.getTxtCodigo().getText(), "Laboratorio", frmRegistrar.getTxtaDescripcion().getText());
             auxL = (Laboratorios)objS;
+            
             break;
             }
             case 3:{
@@ -144,6 +128,53 @@ public class Controlador implements ActionListener {
         }
         objR.getListaH().get(objR.getListaH().size()-1).setDtsServicio(objS);
         }
+     if(ae.getSource() == frmExamenes.getBtnAgregar()){
+         Examen ex = null;
+                   if(frmExamenes.getBtnSangre().isSelected()){
+                       ex=new Examen("101","Sangre",frmExamenes.getTxtDescripcion().getText(),12000);
+                   }
+                   if(frmExamenes.getBtnOrina().isSelected()){
+                      ex=new Examen("102","Orina",frmExamenes.getTxtDescripcion().getText(),10000);
+                   }
+                   if(frmExamenes.getBtnCorprologico().isSelected()){
+                      ex=new Examen("103","Cropológico",frmExamenes.getTxtDescripcion().getText(),15000);
+                   }
+                   if(frmExamenes.getBtnOptometria().isSelected()){
+                     ex=new Examen("104","Optometría",frmExamenes.getTxtDescripcion().getText(),35000);
+                   }
+                   if(frmExamenes.getBtnOdontologia().isSelected()){
+                      ex=new Examen("105","Odontología",frmExamenes.getTxtDescripcion().getText(),50000);
+                   }
+                examenes.add(ex);
+                auxL.setExamenes(examenes);
+                objR.getListaH().get(objR.getListaH().size()-1).setDtsServicio(auxL);
+                JOptionPane.showMessageDialog(frmExamenes, objR.getListaH().get(objR.getListaH().size()-1).getDtsServicio().toString());
+                JOptionPane.showMessageDialog(frmExamenes, "Examen Agregado con exito");
+               }   
+    }
+    
+    public ArrayList<Examen> agregarExamen(ActionEvent ae){
+        abrirVentana(frmExamenes);
+        ArrayList<Examen> ex = null;
+        if(ae.getSource() == frmExamenes.getBtnAgregar()){
+                   if(frmExamenes.getBtnSangre().isSelected()){
+                       ex.add(new Examen("101","Sangre",frmExamenes.getTxtDescripcion().getText(),12000));
+                   }
+                   if(frmExamenes.getBtnOrina().isSelected()){
+                      ex.add(new Examen("102","Orina",frmExamenes.getTxtDescripcion().getText(),10000));
+                   }
+                   if(frmExamenes.getBtnCorprologico().isSelected()){
+                      ex.add(new Examen("103","Cropológico",frmExamenes.getTxtDescripcion().getText(),15000));
+                   }
+                   if(frmExamenes.getBtnOptometria().isSelected()){
+                     ex.add(new Examen("104","Optometría",frmExamenes.getTxtDescripcion().getText(),35000));
+                   }
+                   if(frmExamenes.getBtnOdontologia().isSelected()){
+                      ex.add(new Examen("105","Odontología",frmExamenes.getTxtDescripcion().getText(),50000));
+                   }
+                JOptionPane.showMessageDialog(frmExamenes, "Examen Agregado con exito");
+               }
+        return ex;
     }
     
     public void agregarDatos(JTable tabla)
@@ -191,7 +222,8 @@ public class Controlador implements ActionListener {
             if(objR.getListaH().get(i).getDtsServicio() instanceof CitaMedGenr || objR.getListaH().get(i).getDtsServicio() instanceof Vacunacion){
                 aux1 = objR.getListaH().get(i).valor();
             }else if(objR.getListaH().get(i).getDtsServicio() instanceof Laboratorios){
-                aux1 = objR.getListaH().get(i).valorLAB(auxL.getExamenes());
+                auxL = (Laboratorios) objR.getListaH().get(i).getDtsServicio();
+                aux1 = objR.getListaH().get(i).valorLAB((Laboratorios)objR.getListaH().get(i).getDtsServicio());
             }else if(objR.getListaH().get(i).getDtsServicio() instanceof Hospitalizacion){
                 aux1 = 0;//En desarrollo
                 //aux1 = objR.getListaH().get(i).valorHOPS(null,null);
