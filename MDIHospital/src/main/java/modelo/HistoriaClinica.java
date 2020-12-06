@@ -124,14 +124,14 @@ public class HistoriaClinica {
         return sum;
     }
     
-    public double valorHOPS(Fecha ingreso, Fecha salida){
-        int dias = 0;
-        if((((salida.getMm()-ingreso.getMm())*30)-60)> 1){
-            dias = (((salida.getMm()-ingreso.getMm())*30)-60)+(salida.getDd()-(30-ingreso.getDd()));
+    public double valorHOPS(Hospitalizacion hops){
+        int dias;
+        if((((hops.getSalida().getMm()-hops.getIngreso().getMm())*30)-60)> 0){
+            dias = (((hops.getSalida().getMm()-hops.getIngreso().getMm())*30)-60)+(hops.getSalida().getDd()-(30-hops.getIngreso().getDd()));
         }else{
-            dias = (salida.getDd()-(30-ingreso.getDd()));
+            dias = (hops.getSalida().getDd()-(30-hops.getIngreso().getDd()));
         }
-        if(dtsServicio.tiposervicio().equalsIgnoreCase("Cita Medicina General")){
+        if(dtsServicio.tiposervicio().equalsIgnoreCase("Hospitalizacion")){
             switch (dtsPaciente.afiliacion()) {
                 case 'A':
                     return dias*30000;

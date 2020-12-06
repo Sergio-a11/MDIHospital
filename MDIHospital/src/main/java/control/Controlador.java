@@ -110,10 +110,7 @@ public class Controlador implements ActionListener {
             }
             case 2:{
                abrirVentana(frmExamenes);
-               
-                objS = new Laboratorios(examenes,frmRegistrar.getTxtCodigo().getText(), "Laboratorio", frmRegistrar.getTxtaDescripcion().getText());
-            auxL = (Laboratorios)objS;
-            
+               objS = new Laboratorios(examenes,frmRegistrar.getTxtCodigo().getText(), "Laboratorio", frmRegistrar.getTxtaDescripcion().getText());
             break;
             }
             case 3:{
@@ -122,7 +119,6 @@ public class Controlador implements ActionListener {
                                                      Integer.parseInt(JOptionPane.showInputDialog(frmRegistrar,"Mes de salida:","Ingrese fecha de salida",1)),
                                                      Integer.parseInt(JOptionPane.showInputDialog(frmRegistrar,"Año de salida:","Ingrese fecha de salida",1))), 
                                            frmRegistrar.getTxtCodigo().getText(), "Hospitalizacion", frmRegistrar.getTxtaDescripcion().getText());
-                auxH = (Hospitalizacion) objS;
             break;    
             }
         }
@@ -151,30 +147,6 @@ public class Controlador implements ActionListener {
                 JOptionPane.showMessageDialog(frmExamenes, objR.getListaH().get(objR.getListaH().size()-1).getDtsServicio().toString());
                 JOptionPane.showMessageDialog(frmExamenes, "Examen Agregado con exito");
                }   
-    }
-    
-    public ArrayList<Examen> agregarExamen(ActionEvent ae){
-        abrirVentana(frmExamenes);
-        ArrayList<Examen> ex = null;
-        if(ae.getSource() == frmExamenes.getBtnAgregar()){
-                   if(frmExamenes.getBtnSangre().isSelected()){
-                       ex.add(new Examen("101","Sangre",frmExamenes.getTxtDescripcion().getText(),12000));
-                   }
-                   if(frmExamenes.getBtnOrina().isSelected()){
-                      ex.add(new Examen("102","Orina",frmExamenes.getTxtDescripcion().getText(),10000));
-                   }
-                   if(frmExamenes.getBtnCorprologico().isSelected()){
-                      ex.add(new Examen("103","Cropológico",frmExamenes.getTxtDescripcion().getText(),15000));
-                   }
-                   if(frmExamenes.getBtnOptometria().isSelected()){
-                     ex.add(new Examen("104","Optometría",frmExamenes.getTxtDescripcion().getText(),35000));
-                   }
-                   if(frmExamenes.getBtnOdontologia().isSelected()){
-                      ex.add(new Examen("105","Odontología",frmExamenes.getTxtDescripcion().getText(),50000));
-                   }
-                JOptionPane.showMessageDialog(frmExamenes, "Examen Agregado con exito");
-               }
-        return ex;
     }
     
     public void agregarDatos(JTable tabla)
@@ -222,11 +194,9 @@ public class Controlador implements ActionListener {
             if(objR.getListaH().get(i).getDtsServicio() instanceof CitaMedGenr || objR.getListaH().get(i).getDtsServicio() instanceof Vacunacion){
                 aux1 = objR.getListaH().get(i).valor();
             }else if(objR.getListaH().get(i).getDtsServicio() instanceof Laboratorios){
-                auxL = (Laboratorios) objR.getListaH().get(i).getDtsServicio();
                 aux1 = objR.getListaH().get(i).valorLAB((Laboratorios)objR.getListaH().get(i).getDtsServicio());
             }else if(objR.getListaH().get(i).getDtsServicio() instanceof Hospitalizacion){
-                aux1 = 0;//En desarrollo
-                //aux1 = objR.getListaH().get(i).valorHOPS(null,null);
+                aux1 = objR.getListaH().get(i).valorHOPS((Hospitalizacion) objR.getListaH().get(i).getDtsServicio());
             }
             Object datos[] = {objR.getListaH().get(i).getNroHistoria(),
                               objR.getListaH().get(i).getFecha().toString(),
