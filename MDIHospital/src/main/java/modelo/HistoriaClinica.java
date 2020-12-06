@@ -6,6 +6,7 @@
 package modelo;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -125,11 +126,15 @@ public class HistoriaClinica {
     }
     
     public double valorHOPS(Hospitalizacion hops){
-        int dias;
-        if((((hops.getSalida().getMm()-hops.getIngreso().getMm())*30)-60)> 0){
+        int dias = 0;
+        if((hops.getSalida().getMm()-hops.getIngreso().getMm())> 1){
             dias = (((hops.getSalida().getMm()-hops.getIngreso().getMm())*30)-60)+(hops.getSalida().getDd()-(30-hops.getIngreso().getDd()));
+        }else if((hops.getSalida().getMm()-hops.getIngreso().getMm())== 1){
+            dias = (hops.getSalida().getDd()+(30-hops.getIngreso().getDd()));
+            JOptionPane.showMessageDialog(null, "Menos de un mes en hospitalizacion1");
         }else{
-            dias = (hops.getSalida().getDd()-(30-hops.getIngreso().getDd()));
+            dias = (hops.getSalida().getDd()-(hops.getIngreso().getDd()));
+            JOptionPane.showMessageDialog(null, "Menos de un mes en hospitalizacion2");
         }
         if(dtsServicio.tiposervicio().equalsIgnoreCase("Hospitalizacion")){
             switch (dtsPaciente.afiliacion()) {
