@@ -17,8 +17,8 @@ import modelo.*;
 import vista.*;
 
 /**
- *
- * @author dadxc
+ * Clase que Controla la logica del progrma y los procesos de la vista desde la interfaz de usuario
+ * @author dadxc & Sergio Cruz
  */
 public class Controlador implements ActionListener {
     Registros objR;
@@ -30,6 +30,9 @@ public class Controlador implements ActionListener {
     Hospitalizacion auxH;
     Laboratorios auxL;
 
+    /**
+     * Controlador básico, inicialización de las ventanas, variables y actionListener
+     */
     public Controlador() {
         this.objR = new Registros();
         this.frmPrincipal = new VentanaPrincipal();
@@ -57,11 +60,18 @@ public class Controlador implements ActionListener {
         auxL = new Laboratorios();
     }
     
+    /**
+     *  Método que inicia y establece el titulo de la ventana Principal
+     */
     public void iniciar(){
         frmPrincipal.setTitle("Hospital");
         frmPrincipal.setVisible(true);
     }
 
+    /**
+     * Método para el control de acciones del formulario
+     * @param ae actionEventa para detercatr eventos en las vistas
+     */
     @Override
     public void actionPerformed(ActionEvent ae) {
         if(ae.getSource() == frmPrincipal.getOpcmRegistrar()){
@@ -77,9 +87,19 @@ public class Controlador implements ActionListener {
         if(ae.getSource() == frmRegistrar.getBtnRegistrar()){
             Paciente objP = null;
             Servicio objS = null;
-        objR.getListaH().add(new HistoriaClinica(frmRegistrar.getTxtNro().getText(),
+            try
+            {//excepcion para control de fecha
+                    objR.getListaH().add(new HistoriaClinica(frmRegistrar.getTxtNro().getText(),
                                                  new Fecha(Integer.parseInt(frmRegistrar.getTxtDia().getText()),Integer.parseInt(frmRegistrar.getTxtMes().getText()),Integer.parseInt(frmRegistrar.getTxtAno().getText())),
                                                  objP,objS));
+            }
+            catch(NumberFormatException ex)
+            {
+                String mensaje[] = ex.getMessage().split(":");
+                JOptionPane.showMessageDialog(frmPrincipal, "Error, se han introducido valores NO númericos " + mensaje[1]);
+            }
+            
+           //tipo de afiliacón
         switch(frmRegistrar.getCmbAfiliacion().getSelectedIndex()){
             case 0:{
                objP = new Sisben(frmRegistrar.getTxtIdentificacion().getText(),frmRegistrar.getTxtNombre().getText(),frmRegistrar.getTxtDireccion().getText(),frmRegistrar.getTxtTelefono().getText()); 
@@ -98,6 +118,7 @@ public class Controlador implements ActionListener {
                 break;
             }
         }
+        
         objR.getListaH().get(objR.getListaH().size()-1).setDtsPaciente(objP);
         switch(frmRegistrar.getCmbTipoServicio().getSelectedIndex()){
             case 0:{
@@ -114,11 +135,18 @@ public class Controlador implements ActionListener {
             break;
             }
             case 3:{
+                try{
                 objS = new Hospitalizacion(new Fecha(Integer.parseInt(frmRegistrar.getTxtDia().getText()),Integer.parseInt(frmRegistrar.getTxtMes().getText()),Integer.parseInt(frmRegistrar.getTxtAno().getText())),
                                            new Fecha(Integer.parseInt(JOptionPane.showInputDialog(frmRegistrar,"Dia de salida:","Ingrese fecha de salida",1)),
                                                      Integer.parseInt(JOptionPane.showInputDialog(frmRegistrar,"Mes de salida:","Ingrese fecha de salida",1)),
                                                      Integer.parseInt(JOptionPane.showInputDialog(frmRegistrar,"Año de salida:","Ingrese fecha de salida",1))), 
                                            frmRegistrar.getTxtCodigo().getText(), "Hospitalizacion", frmRegistrar.getTxtaDescripcion().getText());
+                }
+                catch(NumberFormatException ex)
+                {
+                    String mensaje[] = ex.getMessage().split(":");
+                    JOptionPane.showMessageDialog(frmPrincipal, "Error, se han introducido valores NO númericos " + mensaje[1]);
+                }
             break;    
             }
         }
@@ -149,6 +177,10 @@ public class Controlador implements ActionListener {
                }   
     }
     
+    /**
+     * Método para agregar datos a la tabla de consulta de datos
+     * @param tabla tabla a modificar
+     */
     public void agregarDatos(JTable tabla)
     {
         String fig = "", ser = "";
@@ -210,6 +242,10 @@ public class Controlador implements ActionListener {
         }
     }
     
+    /**
+     * Método para abrir ventanas internas y controlar sus excepciones
+     * @param frm ventana a abrir
+     */
     public void abrirVentana(JInternalFrame frm)
     {
         if(frm.isVisible())
