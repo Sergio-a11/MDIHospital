@@ -28,7 +28,7 @@ public class Hospitalizacion extends Servicio{
     }
 
     /**
-     * Construcor básico, llama al constructor padre y inicializa fecha de ingreso y salida
+     * Construcor básico, llama al constructor padre e inicializa fecha de ingreso y salida
      */
     public Hospitalizacion() {
         super();
