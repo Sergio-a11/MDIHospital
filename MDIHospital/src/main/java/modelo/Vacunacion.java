@@ -11,15 +11,27 @@ package modelo;
  */
 public class Vacunacion extends Servicio{
 
+    /**
+     *Constructor parametrico
+     * @param Codigo Codigo de la vacunacion
+     * @param Nombre Nombre de la vacunacion
+     * @param Descripcion Descripcion de la vacunacion
+     */
     public Vacunacion(String Codigo, String Nombre, String Descripcion) {
         super(Codigo, Nombre, Descripcion);
     }
 
+    /**
+     *Constructor Basico
+     */
     public Vacunacion() {
         super();
     }
 
-    
+    /**
+     *
+     * @return String
+     */
     @Override
     public String tiposervicio() {
         return  "Vacunacion";  

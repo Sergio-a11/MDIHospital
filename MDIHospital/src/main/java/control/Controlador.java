@@ -151,6 +151,7 @@ public class Controlador implements ActionListener {
             }
         }
         objR.getListaH().get(objR.getListaH().size()-1).setDtsServicio(objS);
+        JOptionPane.showMessageDialog(frmPrincipal, "Historia Clinica Registrada");
         }
      if(ae.getSource() == frmExamenes.getBtnAgregar()){
          Examen ex = null;
@@ -240,6 +241,7 @@ public class Controlador implements ActionListener {
                               aux1};
             plantilla.addRow(datos);
         }
+        frmConsultar.getTxtTotal().setText(""+objR.recaudoTotal());
     }
     
     /**

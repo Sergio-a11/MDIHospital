@@ -18,6 +18,13 @@ public class HistoriaClinica {
     private Paciente dtsPaciente;
     private Servicio dtsServicio;
 
+    /**
+     *Constructor parametrico
+     * @param NroHistoria
+     * @param fecha
+     * @param dtsPaciente
+     * @param dtsServicio
+     */
     public HistoriaClinica(String NroHistoria, Fecha fecha, Paciente dtsPaciente, Servicio dtsServicio) {
         this.NroHistoria = NroHistoria;
         this.fecha = fecha;
@@ -25,48 +32,92 @@ public class HistoriaClinica {
         this.dtsServicio = dtsServicio;
     }
     
+    /**
+     *Constructor basco
+     */
     public HistoriaClinica() {
         this.NroHistoria = "";
         this.fecha = new Fecha();
     }
 
+    /**
+     *retonra el numero de la historia clinica
+     * @return String
+     */
     public String getNroHistoria() {
         return NroHistoria;
     }
 
+    /**
+     *Establece o modifica el numero de la historia clinica
+     * @param NroHistoria
+     */
     public void setNroHistoria(String NroHistoria) {
         this.NroHistoria = NroHistoria;
     }
 
+    /**
+     *retorna la fecha de la historia clinica
+     * @return
+     */
     public Fecha getFecha() {
         return fecha;
     }
 
+    /**
+     *establece o modifica la fecha de la historia clinica
+     * @param fecha
+     */
     public void setFecha(Fecha fecha) {
         this.fecha = fecha;
     }
 
+    /**
+     *retorna los datos del paciente de la historia clinica
+     * @return
+     */
     public Paciente getDtsPaciente() {
         return dtsPaciente;
     }
 
+    /**
+     *establece o modifica el objeto paciente de la historia clinica
+     * @param dtsPaciente
+     */
     public void setDtsPaciente(Paciente dtsPaciente) {
         this.dtsPaciente = dtsPaciente;
     }
 
+    /**
+     *retorna el objeto servicio de la historia clinica
+     * @return
+     */
     public Servicio getDtsServicio() {
         return dtsServicio;
     }
 
+    /**
+     *establece o modifica el objeto servicio de la historia clinica
+     * @param dtsServicio
+     */
     public void setDtsServicio(Servicio dtsServicio) {
         this.dtsServicio = dtsServicio;
     }
 
+    /**
+     *
+     * @return String
+     */
     @Override
     public String toString() {
         return "HistoriaClinica" + "\nNumero Historia:" + NroHistoria + "\nfecha:" + fecha.toString() + "\nDatos Paciente=" + dtsPaciente.toString() + "\nDatos Servicio:" + dtsServicio.toString();
     }
     
+    /**
+     *En caso de que el servicio sea una cita medica general o una vacunacion
+     * retorna el valor a pagar por el cliente segun su afiliacion
+     * @return Double
+     */
     public double valor(){
         
         if(dtsServicio.tiposervicio().equalsIgnoreCase("Cita Medicina General")){
@@ -98,6 +149,12 @@ public class HistoriaClinica {
         return 0;
     }
     
+    /**
+     *retorna el valor a pagar del servicio en caso de que sea de laboratorios
+     * basandose en el tipo de afiliacion y los examenes realizados
+     * @param lab objeto tipo Laboratorios para saber los examenes
+     * @return Double
+     */
     public double valorLAB(Laboratorios lab){
         double sum =0;
         if(dtsServicio.tiposervicio().equalsIgnoreCase("Laboratorios")){
@@ -125,6 +182,12 @@ public class HistoriaClinica {
         return sum;
     }
     
+    /**
+     *retorna el valor a pagar del servicio en caso de que sea una hospitalizacion
+     * tomando en cuenta el tipo de afiliacion del cliente y los dias de hospitalizacion
+     * @param hops objeto de tipo hospitalizacion para saber la cantidad de dias que se quedo
+     * @return double
+     */
     public double valorHOPS(Hospitalizacion hops){
         int dias = 0;
         if((hops.getSalida().getMm()-hops.getIngreso().getMm())> 1){

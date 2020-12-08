@@ -11,14 +11,28 @@ package modelo;
  */
 public class TipoA extends Paciente{
 
+    /**
+     *Constructor Parametrico
+     * @param identificacion identificacion del paciente tipo A
+     * @param nombre nombre del paciente tipo A
+     * @param direccion direccion del paciente tipo A
+     * @param telefono telefono del paciente tipo A
+     */
     public TipoA(String identificacion, String nombre, String direccion, String telefono) {
         super(identificacion, nombre, direccion, telefono);
     }
 
+    /**
+     *Constructor basico
+     */
     public TipoA() {
         super();
     }
 
+    /**
+     *
+     * @return String
+     */
     @Override
     public char afiliacion() {
         return 'A';

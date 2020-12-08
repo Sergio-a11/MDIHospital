@@ -10,49 +10,104 @@ package modelo;
  * @author dadxc
  */
 public abstract class  Servicio {
-    protected String Codigo, Nombre, Descripcion;
 
+    /**
+     *codigo respectivo de cada servicio
+     */
+    protected String Codigo,
+
+    /**
+     *nombre respectivo al servicio
+     */
+    Nombre,
+
+    /**
+     *descripcion respectiva de cada servicio
+     */
+    Descripcion;
+
+    /**
+     *Constructor parametrico
+     * @param Codigo codigo del servicio
+     * @param Nombre nombre del servicio
+     * @param Descripcion descripcion del servicio
+     */
     public Servicio(String Codigo, String Nombre, String Descripcion) {
         this.Codigo = Codigo;
         this.Nombre = Nombre;
         this.Descripcion = Descripcion;
     }
     
+    /**
+     *Constructor basico
+     */
     public Servicio() {
         this.Codigo = "";
         this.Nombre = "";
         this.Descripcion = "";
     }
 
+    /**
+     *retorna el codigo del servicio
+     * @return String
+     */
     public String getCodigo() {
         return Codigo;
     }
 
+    /**
+     *establece o modifica el codigo del servicio
+     * @param Codigo
+     */
     public void setCodigo(String Codigo) {
         this.Codigo = Codigo;
     }
 
+    /**
+     *retorna el nombre respectivo del servicio
+     * @return String
+     */
     public String getNombre() {
         return Nombre;
     }
 
+    /**
+     *establece o modifica el nombre del servicio
+     * @param Nombre
+     */
     public void setNombre(String Nombre) {
         this.Nombre = Nombre;
     }
 
+    /**
+     *retorna la descripcion respectiva del servicio
+     * @return String
+     */
     public String getDescripcion() {
         return Descripcion;
     }
 
+    /**
+     *Establece o modifica la descripcion respectiva del servicio
+     * @param Descripcion
+     */
     public void setDescripcion(String Descripcion) {
         this.Descripcion = Descripcion;
     }
 
+    /**
+     *
+     * @return String
+     */
     @Override
     public String toString() {
         return "Servicio" + "\nCodigo:" + Codigo + "\nNombre:" + Nombre + "\nDescripcion:" + Descripcion;
     }
     
+    /**
+     *metodo abstracto para que cada servicio especifique su tipo de servicio hospitalario
+     * @return String
+     */
     public abstract String tiposervicio();
     
 }
