@@ -18,7 +18,7 @@ import vista.*;
 
 /**
  * Clase que Controla la logica del progrma y los procesos de la vista desde la interfaz de usuario
- * @author dadxc & Sergio Cruz
+ * @author dadxc
  */
 public class Controlador implements ActionListener {
     Registros objR;

@@ -57,7 +57,7 @@ public abstract class  Servicio {
 
     /**
      *establece o modifica el codigo del servicio
-     * @param Codigo
+     * @param Codigo codigo del servicio
      */
     public void setCodigo(String Codigo) {
         this.Codigo = Codigo;
@@ -73,7 +73,7 @@ public abstract class  Servicio {
 
     /**
      *establece o modifica el nombre del servicio
-     * @param Nombre
+     * @param Nombre nombre del servicio
      */
     public void setNombre(String Nombre) {
         this.Nombre = Nombre;
@@ -89,7 +89,7 @@ public abstract class  Servicio {
 
     /**
      *Establece o modifica la descripcion respectiva del servicio
-     * @param Descripcion
+     * @param Descripcion descripcion del servicio
      */
     public void setDescripcion(String Descripcion) {
         this.Descripcion = Descripcion;

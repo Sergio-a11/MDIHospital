@@ -31,7 +31,7 @@ public class Registros {
 
     /**
      *retorna la lista de historiales clinicos 
-     * @return ArrayList<HistoriaClinica>
+     * @return ArrayList lista de historiales clinicos
      */
     public ArrayList<HistoriaClinica> getListaH() {
         return listaH;

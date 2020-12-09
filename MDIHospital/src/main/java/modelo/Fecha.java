@@ -48,7 +48,7 @@ public class Fecha {
 
     /**
      *retorna el mes de la fecha
-     * @return
+     * @return int
      */
     public int getMm() {
         return mm;
@@ -56,7 +56,7 @@ public class Fecha {
 
     /**
      *retorna el año de la fecha
-     * @return
+     * @return int
      */
     public int getAa() {
         return aa;

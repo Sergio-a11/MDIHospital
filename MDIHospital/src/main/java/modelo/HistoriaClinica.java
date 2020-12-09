@@ -20,10 +20,10 @@ public class HistoriaClinica {
 
     /**
      *Constructor parametrico
-     * @param NroHistoria
-     * @param fecha
-     * @param dtsPaciente
-     * @param dtsServicio
+     * @param NroHistoria numero de la historia clinica
+     * @param fecha fecha de la historia clinica
+     * @param dtsPaciente datos del paciente de la historia clinica
+     * @param dtsServicio datos del servicio de la historia clinica
      */
     public HistoriaClinica(String NroHistoria, Fecha fecha, Paciente dtsPaciente, Servicio dtsServicio) {
         this.NroHistoria = NroHistoria;
@@ -50,15 +50,15 @@ public class HistoriaClinica {
 
     /**
      *Establece o modifica el numero de la historia clinica
-     * @param NroHistoria
+     * @param NroHistoria numero de la historia clinica
      */
     public void setNroHistoria(String NroHistoria) {
         this.NroHistoria = NroHistoria;
     }
 
     /**
-     *retorna la fecha de la historia clinica
-     * @return
+     *retorna la fecha de la historia clinica en un objeto tipo fecha
+     * @return Fecha
      */
     public Fecha getFecha() {
         return fecha;
@@ -66,7 +66,7 @@ public class HistoriaClinica {
 
     /**
      *establece o modifica la fecha de la historia clinica
-     * @param fecha
+     * @param fecha objeto fecha de la fecha de la historia clinica
      */
     public void setFecha(Fecha fecha) {
         this.fecha = fecha;
@@ -74,7 +74,7 @@ public class HistoriaClinica {
 
     /**
      *retorna los datos del paciente de la historia clinica
-     * @return
+     * @return Paciente objeto del paciente de la historia clinica
      */
     public Paciente getDtsPaciente() {
         return dtsPaciente;
@@ -82,7 +82,7 @@ public class HistoriaClinica {
 
     /**
      *establece o modifica el objeto paciente de la historia clinica
-     * @param dtsPaciente
+     * @param dtsPaciente objeto del paciente de la historia clinica
      */
     public void setDtsPaciente(Paciente dtsPaciente) {
         this.dtsPaciente = dtsPaciente;
@@ -90,7 +90,7 @@ public class HistoriaClinica {
 
     /**
      *retorna el objeto servicio de la historia clinica
-     * @return
+     * @return Servicio objeto del servicio de la historia clinica
      */
     public Servicio getDtsServicio() {
         return dtsServicio;
@@ -98,7 +98,7 @@ public class HistoriaClinica {
 
     /**
      *establece o modifica el objeto servicio de la historia clinica
-     * @param dtsServicio
+     * @param dtsServicio objeto del servicio de la historia clinica
      */
     public void setDtsServicio(Servicio dtsServicio) {
         this.dtsServicio = dtsServicio;

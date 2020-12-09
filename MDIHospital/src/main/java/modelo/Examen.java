@@ -79,7 +79,7 @@ public class Examen {
 
     /**
      *Establece o modifica descripcion del examen
-     * @param descripcion
+     * @param descripcion descripcion del examen
      */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
@@ -95,7 +95,7 @@ public class Examen {
 
     /**
      *establece o modifica valor del examen
-     * @param valor
+     * @param valor valor a pagar por el examen
      */
     public void setValor(double valor) {
         this.valor = valor;
