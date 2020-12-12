@@ -5,6 +5,9 @@
  */
 package modelo;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Clase de la entidad Hospitalización
  * @author dadxc
@@ -48,8 +51,23 @@ public class Hospitalizacion extends Servicio{
      * Método para modifica la fecha de ingreso como dato Fecha, compuesto de enteros
      * @param Ingreso fecha de ingreso, tipo Fecha compuesto de enteros
      */
-    public void setIngreso(Fecha Ingreso) {
-        this.Ingreso = Ingreso;
+    public void setIngreso(Fecha Ingreso) throws FormatoEntradaExcepcion {
+        String fecha = String.valueOf(Ingreso);
+        Pattern pat = Pattern.compile("\\d{1,2}/\\d{1,2}/\\d{4}");
+        Matcher mat = pat.matcher(fecha);
+        
+        if(fecha.equals(""))
+        {
+            throw new FormatoEntradaExcepcion(101);
+        }
+        else if(mat.find())
+        {
+            throw new FormatoEntradaExcepcion(201);
+        }
+        else
+        {
+            this.Ingreso = Ingreso;
+        }
     }
 
     /**

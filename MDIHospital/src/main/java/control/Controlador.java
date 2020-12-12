@@ -9,6 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyVetoException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -84,19 +86,36 @@ public class Controlador implements ActionListener {
         if(ae.getSource() == frmPrincipal.getOpcmSalir()){
             System.exit(0);
         }
+        if(ae.getSource() == frmRegistrar.getBtnFechaSistema())
+        {
+            Fecha fecha = new Fecha();
+            frmRegistrar.getTxtDia().setText(String.valueOf(fecha.getDd()));
+            frmRegistrar.getTxtMes().setText(String.valueOf(fecha.getMm()));
+            frmRegistrar.getTxtAno().setText(String.valueOf(fecha.getAa()));
+        }
         if(ae.getSource() == frmRegistrar.getBtnRegistrar()){
+            HistoriaClinica historia = new HistoriaClinica();
             Paciente objP = null;
             Servicio objS = null;
+            
             try
             {//excepcion para control de fecha
-                    objR.getListaH().add(new HistoriaClinica(frmRegistrar.getTxtNro().getText(),
-                                                 new Fecha(Integer.parseInt(frmRegistrar.getTxtDia().getText()),Integer.parseInt(frmRegistrar.getTxtMes().getText()),Integer.parseInt(frmRegistrar.getTxtAno().getText())),
-                                                 objP,objS));
+                
+                Fecha fecha = new Fecha(Integer.parseInt(frmRegistrar.getTxtDia().getText()),Integer.parseInt(frmRegistrar.getTxtMes().getText()),Integer.parseInt(frmRegistrar.getTxtAno().getText()));
+                //se divio en vez de usar el parametrico para poder controlar las excepciones
+                
+                historia.setNroHistoria(frmRegistrar.getTxtNro().getText());
+                historia.setFecha(fecha);
+                //objR.getListaH().add(new HistoriaClinica(frmRegistrar.getTxtNro().getText(),
+                                                 //fecha,
+            //                                     objP,objS));
             }
             catch(NumberFormatException ex)
             {
                 String mensaje[] = ex.getMessage().split(":");
                 JOptionPane.showMessageDialog(frmPrincipal, "Error, se han introducido valores NO númericos " + mensaje[1]);
+            } catch (FormatoEntradaExcepcion ex) {
+                JOptionPane.showMessageDialog(frmPrincipal, ex.toString());
             }
             
            //tipo de afiliacón
@@ -118,8 +137,8 @@ public class Controlador implements ActionListener {
                 break;
             }
         }
-        
-        objR.getListaH().get(objR.getListaH().size()-1).setDtsPaciente(objP);
+        historia.setDtsPaciente(objP);
+        //objR.getListaH().get(objR.getListaH().size()-1).setDtsPaciente(objP);
         switch(frmRegistrar.getCmbTipoServicio().getSelectedIndex()){
             case 0:{
                objS = new CitaMedGenr(frmRegistrar.getTxtCodigo().getText(), "Cita Medicina General", frmRegistrar.getTxtaDescripcion().getText()); 
@@ -150,7 +169,9 @@ public class Controlador implements ActionListener {
             break;    
             }
         }
-        objR.getListaH().get(objR.getListaH().size()-1).setDtsServicio(objS);
+        historia.setDtsServicio(objS);
+        //objR.getListaH().get(objR.getListaH().size()-1).setDtsServicio(objS);
+        objR.getListaH().add(historia);//adición a la lista
         JOptionPane.showMessageDialog(frmPrincipal, "Historia Clinica Registrada");
         }
      if(ae.getSource() == frmExamenes.getBtnAgregar()){

@@ -6,6 +6,8 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -68,8 +70,24 @@ public class HistoriaClinica {
      *establece o modifica la fecha de la historia clinica
      * @param fecha objeto fecha de la fecha de la historia clinica
      */
-    public void setFecha(Fecha fecha) {
-        this.fecha = fecha;
+    public void setFecha(Fecha fecha) throws FormatoEntradaExcepcion {
+        String fe = String.valueOf(fecha);
+        Pattern pat = Pattern.compile("\\d{1,2}/\\d{1,2}/\\d{4}");
+        Matcher mat = pat.matcher(fe);
+        
+        if(fecha.equals(""))
+        {
+            throw new FormatoEntradaExcepcion(101);
+        }
+        else if(!mat.find())
+        {
+            throw new FormatoEntradaExcepcion(201);
+        }
+        else
+        {
+            this.fecha = fecha;
+        }
+        
     }
 
     /**
