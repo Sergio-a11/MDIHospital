@@ -28,10 +28,19 @@ public class FormatoEntradaExcepcion extends Exception {
                 break;
             }
             case 102://letras
+            {
                 this.msg = "Campo dedicado unicamente a letras";
+                break;
+            }
+            case 103:
+            {
+                this.msg = "Se ha superado el numero de caracteres maximo";
+                break;
+            }
             case 201://fecha formato
             {
                 this.msg = "La fecha debe tener formato: dd/mm/aaaa";
+                break;
             }
         }
     }
