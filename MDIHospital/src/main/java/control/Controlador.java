@@ -96,7 +96,8 @@ public class Controlador implements ActionListener {
         if(ae.getSource() == frmRegistrar.getBtnRegistrar()){
             HistoriaClinica historia = new HistoriaClinica();
             Paciente objP = null;
-            Servicio objS = null;            
+            Servicio objS = null;  
+            boolean flag = false;
             try
             {//excepcion para control de fecha
                 Fecha fecha = new Fecha(Integer.parseInt(frmRegistrar.getTxtDia().getText()),Integer.parseInt(frmRegistrar.getTxtMes().getText()),Integer.parseInt(frmRegistrar.getTxtAno().getText()));
@@ -112,21 +113,28 @@ public class Controlador implements ActionListener {
             {
                 String mensaje[] = ex.getMessage().split(":");
                 JOptionPane.showMessageDialog(frmPrincipal, "Error, se han introducido valores NO númericos " + mensaje[1]);
-                Fecha fecha = new Fecha();
+                //Para que se ponga automaticamente la del sistema si la caga ajaj no se si ponerlo igual abajo
+                //Fecha fecha = new Fecha();
                 //debe haber una mejor solucion para esto : para que vuelva a preguntar
-                frmRegistrar.getTxtDia().setText(String.valueOf(fecha.getDd()));
-                frmRegistrar.getTxtMes().setText(String.valueOf(fecha.getMm()));
-                frmRegistrar.getTxtAno().setText(String.valueOf(fecha.getAa()));
+                //frmRegistrar.getTxtDia().setText(String.valueOf(fecha.getDd()));
+                //frmRegistrar.getTxtMes().setText(String.valueOf(fecha.getMm()));
+                //frmRegistrar.getTxtAno().setText(String.valueOf(fecha.getAa()));
+                flag = true;
                 
             } catch (FormatoEntradaExcepcion ex) {
                 JOptionPane.showMessageDialog(frmPrincipal, ex.toString()); 
-                Fecha fecha = new Fecha();
-                frmRegistrar.getTxtDia().setText(String.valueOf(fecha.getDd()));
-                frmRegistrar.getTxtMes().setText(String.valueOf(fecha.getMm()));
-                frmRegistrar.getTxtAno().setText(String.valueOf(fecha.getAa()));
+                //Fecha fecha = new Fecha();
+                //frmRegistrar.getTxtDia().setText(String.valueOf(fecha.getDd()));
+                //frmRegistrar.getTxtMes().setText(String.valueOf(fecha.getMm()));
+                //frmRegistrar.getTxtAno().setText(String.valueOf(fecha.getAa()));
+                flag = true;
             }
             //para poder aplicar la excepcion toca hacerle con set? siempre?
             //como evitar que se registre y que no caiga el programa con la excepcion? Dejar que el user carrija...
+            if(flag == true)
+            {
+                JOptionPane.showMessageDialog(frmPrincipal, "Intente de nuevo"); 
+            }
            //tipo de afiliacón
         switch(frmRegistrar.getCmbAfiliacion().getSelectedIndex()){
             case 0:{
@@ -146,7 +154,11 @@ public class Controlador implements ActionListener {
                 break;
             }
         }
-        historia.setDtsPaciente(objP);
+        if(flag == false)
+        {
+            historia.setDtsPaciente(objP);
+        }
+        
         //objR.getListaH().get(objR.getListaH().size()-1).setDtsPaciente(objP);
         switch(frmRegistrar.getCmbTipoServicio().getSelectedIndex()){
             case 0:{
@@ -178,10 +190,15 @@ public class Controlador implements ActionListener {
             break;    
             }
         }
-        historia.setDtsServicio(objS);
+        if(flag == false)
+        {
+            historia.setDtsServicio(objS);
+            objR.getListaH().add(historia);//adición a la lista
+            JOptionPane.showMessageDialog(frmPrincipal, "Historia Clinica Registrada");
+        }
+        
         //objR.getListaH().get(objR.getListaH().size()-1).setDtsServicio(objS);
-        objR.getListaH().add(historia);//adición a la lista
-        JOptionPane.showMessageDialog(frmPrincipal, "Historia Clinica Registrada");
+        
         }
      if(ae.getSource() == frmExamenes.getBtnAgregar()){
          Examen ex = null;
