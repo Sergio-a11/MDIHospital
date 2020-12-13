@@ -42,6 +42,7 @@ public class VentanaExamenes extends javax.swing.JInternalFrame {
         btnAgregar = new javax.swing.JButton();
         lblDescripcion = new javax.swing.JLabel();
         txtDescripcion = new javax.swing.JTextField();
+        btnFinalizar = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -59,6 +60,8 @@ public class VentanaExamenes extends javax.swing.JInternalFrame {
 
         lblDescripcion.setText("Descripcion");
 
+        btnFinalizar.setText("Finalizar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -71,7 +74,8 @@ public class VentanaExamenes extends javax.swing.JInternalFrame {
                     .addComponent(btnCorprologico)
                     .addComponent(btnOptometria)
                     .addComponent(btnOdontologia)
-                    .addComponent(btnAgregar, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnFinalizar, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
@@ -101,7 +105,8 @@ public class VentanaExamenes extends javax.swing.JInternalFrame {
                         .addComponent(btnOdontologia)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnAgregar)
-                        .addGap(0, 5, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnFinalizar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(txtDescripcion)))
@@ -182,12 +187,21 @@ public class VentanaExamenes extends javax.swing.JInternalFrame {
     public void setTxtDescripcion(JTextField txtDescripcion) {
         this.txtDescripcion = txtDescripcion;
     }
+
+    public JButton getBtnFinalizar() {
+        return btnFinalizar;
+    }
+
+    public void setBtnFinalizar(JButton btnFinalizar) {
+        this.btnFinalizar = btnFinalizar;
+    }
     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JRadioButton btnCorprologico;
+    private javax.swing.JButton btnFinalizar;
     private javax.swing.ButtonGroup btnGrupo;
     private javax.swing.JRadioButton btnOdontologia;
     private javax.swing.JRadioButton btnOptometria;

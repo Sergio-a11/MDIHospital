@@ -51,7 +51,11 @@ public class Registros {
      */
     @Override
     public String toString() {
-        return "Registros{" + "listaH=" + listaH + '}';
+        String msj = "";
+        for (int i = 0; i < listaH.size(); i++) {
+            msj+=listaH.get(i).toString();
+        }
+        return msj;
     }
     
     /**

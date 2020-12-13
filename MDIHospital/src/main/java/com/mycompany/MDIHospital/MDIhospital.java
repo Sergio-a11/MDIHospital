@@ -6,6 +6,7 @@
 package com.mycompany.MDIHospital;
 
 import control.Controlador;
+import java.io.IOException;
 
 /**
  *
@@ -16,7 +17,7 @@ public class MDIhospital {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Controlador objC = new Controlador();
         objC.iniciar();
     }

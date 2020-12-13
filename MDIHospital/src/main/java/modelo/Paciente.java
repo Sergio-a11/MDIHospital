@@ -125,7 +125,7 @@ public abstract class Paciente {
      */
     @Override
     public String toString() {
-        return "Paciente" + "\nidentificacion:" + identificacion + "\nnombre:" + nombre + "\ndireccion:" + direccion + "\ntelefono:" + telefono;
+        return nombre +";"+identificacion+";"+direccion +";"+telefono;
     }
     
     /**
