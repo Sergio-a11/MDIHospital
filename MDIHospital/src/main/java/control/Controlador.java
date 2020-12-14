@@ -8,6 +8,7 @@ package control;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyVetoException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,6 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import modelo.*;
+import modelo.Conexion;
 import vista.*;
 
 /**
@@ -31,16 +33,18 @@ public class Controlador implements ActionListener {
     ArrayList<Examen> examenes;
     Hospitalizacion auxH;
     Laboratorios auxL;
+    Conexion con;
 
     /**
      * Controlador básico, inicialización de las ventanas, variables y actionListener
      */
-    public Controlador() {
+    public Controlador() throws IOException {
         this.objR = new Registros();
         this.frmPrincipal = new VentanaPrincipal();
         this.frmRegistrar = new VentanaRegistrar();
         this.frmExamenes = new VentanaExamenes();
         this.frmConsultar = new VentanaConsultar();
+        this.con = new Conexion();
         frmPrincipal.getPndEscritorio().add(frmRegistrar);
         frmPrincipal.getPndEscritorio().add(frmExamenes);
         frmPrincipal.getPndEscritorio().add(frmConsultar);
@@ -52,6 +56,7 @@ public class Controlador implements ActionListener {
         this.frmRegistrar.getBtnFechaSistema().addActionListener(this);//En desarrollo
         this.frmRegistrar.getBtnRegistrar().addActionListener(this);
         this.frmExamenes.getBtnAgregar().addActionListener(this);
+        this.frmExamenes.getBtnFinalizar().addActionListener(this);
         this.frmExamenes.getBtnGrupo().add(frmExamenes.getBtnSangre());
         this.frmExamenes.getBtnGrupo().add(frmExamenes.getBtnOrina());
         this.frmExamenes.getBtnGrupo().add(frmExamenes.getBtnOptometria());
@@ -80,7 +85,12 @@ public class Controlador implements ActionListener {
             abrirVentana(frmRegistrar);
         }
         if(ae.getSource() == frmPrincipal.getOpcmConsultar()){
-            agregarDatos(frmConsultar.getTblConsulta());
+            try {
+                //agregarDatos(frmConsultar.getTblConsulta());
+                agregarDatosPersistencia(frmConsultar.getTblConsulta());
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(frmPrincipal, "Error al abrir el archivo");
+            }
             abrirVentana(frmConsultar);
         }
         if(ae.getSource() == frmPrincipal.getOpcmSalir()){
@@ -198,6 +208,17 @@ public class Controlador implements ActionListener {
         }
         
         //objR.getListaH().get(objR.getListaH().size()-1).setDtsServicio(objS);
+        objR.getListaH().add(historia);//adición a la lista
+        JOptionPane.showMessageDialog(frmPrincipal, "Historia Clinica Registrada");
+        if( !(objR.getListaH().get(objR.getListaH().size()-1).getDtsServicio() instanceof Laboratorios)){
+            try{
+                String msj = datos(objR.getListaH().size()-1);
+                con.EscribeDatos(msj, "RegistroHospital.txt");
+            }catch(IOException ex){
+                JOptionPane.showMessageDialog(frmConsultar, "Error al abrir el archivo");
+            }   
+        
+        }
         
         }
      if(ae.getSource() == frmExamenes.getBtnAgregar()){
@@ -222,14 +243,29 @@ public class Controlador implements ActionListener {
                 objR.getListaH().get(objR.getListaH().size()-1).setDtsServicio(auxL);
                 JOptionPane.showMessageDialog(frmExamenes, objR.getListaH().get(objR.getListaH().size()-1).getDtsServicio().toString());
                 JOptionPane.showMessageDialog(frmExamenes, "Examen Agregado con exito");
-               }   
+                /*try{
+                    String msj = datos(objR.getListaH().size()-1);
+                    con.EscribeDatos(msj, "RegistroHospital.txt");
+                }catch(IOException exx){
+                    JOptionPane.showMessageDialog(frmConsultar, "Error al abrir el archivo");
+                }*/
+     }
+     if(ae.getSource() ==frmExamenes.getBtnFinalizar()){
+         try{
+            String msj = datos(objR.getListaH().size()-1);
+            con.EscribeDatos(msj, "RegistroHospital.txt");
+        }catch(IOException ex){
+            JOptionPane.showMessageDialog(frmConsultar, "Error al abrir el archivo");
+        }
+        frmExamenes.setVisible(false); 
+     }
     }
     
     /**
      * Método para agregar datos a la tabla de consulta de datos
      * @param tabla tabla a modificar
      */
-    public void agregarDatos(JTable tabla)
+    public void agregarDatos(JTable tabla) throws IOException
     {
         String fig = "", ser = "";
         double aux1 = 0;
@@ -287,7 +323,17 @@ public class Controlador implements ActionListener {
                               fig, ser, 
                               aux1};
             plantilla.addRow(datos);
+            
         }
+        frmConsultar.getTxtTotal().setText(""+objR.recaudoTotal());
+        
+    }
+    
+    public void agregarDatosPersistencia(JTable tabla) throws IOException{
+        DefaultTableModel plantilla = (DefaultTableModel) tabla.getModel();
+        plantilla.setRowCount(0);
+        String datos = con.leerDatos("RegistroHospital.txt");
+        archivoTabla(datos,frmConsultar.getTblConsulta());
         frmConsultar.getTxtTotal().setText(""+objR.recaudoTotal());
     }
     
@@ -319,5 +365,47 @@ public class Controlador implements ActionListener {
             frmPrincipal.getPndEscritorio().setSelectedFrame(frm);
             frm.setVisible(true);
         }     
+    }
+    
+    public void archivoTabla(String datos, JTable tabla){
+        DefaultTableModel plantilla = (DefaultTableModel) tabla.getModel();
+        String ListaHospital []=datos.split("\n");
+        for (int i = 0; i < ListaHospital.length; i++) {
+            String historia []= ListaHospital[i].split(";");
+            Object fila[] = {historia[0], historia[1],
+                historia[2], historia[3],
+                historia[4], historia[5],
+                historia[6], historia[7],
+                Double.parseDouble(historia[8])};
+            plantilla.addRow(fila);
+        }
+    }
+    public String datos(int i){
+        String msj = "";
+        if(objR.getListaH().get(i).getDtsServicio()instanceof CitaMedGenr || objR.getListaH().get(i).getDtsServicio()instanceof Vacunacion){
+         msj = objR.getListaH().get(i).getNroHistoria()+";"
+              +objR.getListaH().get(i).getFecha().toString()+";"
+              +objR.getListaH().get(i).getDtsPaciente().toString()+";"
+              +objR.getListaH().get(i).getDtsPaciente().afiliacion()+";"
+              +objR.getListaH().get(i).getDtsServicio().getNombre()+";"
+              +objR.getListaH().get(i).valor();   
+        }
+        if(objR.getListaH().get(i).getDtsServicio()instanceof Laboratorios){
+         msj = objR.getListaH().get(i).getNroHistoria()+";"
+              +objR.getListaH().get(i).getFecha().toString()+";"
+              +objR.getListaH().get(i).getDtsPaciente().toString()+";"
+              +objR.getListaH().get(i).getDtsPaciente().afiliacion()+";"
+              +objR.getListaH().get(i).getDtsServicio().tiposervicio()+";"
+              +objR.getListaH().get(i).valorLAB((Laboratorios) objR.getListaH().get(i).getDtsServicio());   
+        }
+        if(objR.getListaH().get(i).getDtsServicio()instanceof Hospitalizacion){
+         msj = objR.getListaH().get(i).getNroHistoria()+";"
+              +objR.getListaH().get(i).getFecha().toString()+";"
+              +objR.getListaH().get(i).getDtsPaciente().toString()+";"
+              +objR.getListaH().get(i).getDtsPaciente().afiliacion()+";"
+              +objR.getListaH().get(i).getDtsServicio().getNombre()+";"
+              +objR.getListaH().get(i).valorHOPS((Hospitalizacion) objR.getListaH().get(i).getDtsServicio());   
+        }
+        return msj;
     }
 }
