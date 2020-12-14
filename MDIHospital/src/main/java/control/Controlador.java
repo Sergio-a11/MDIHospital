@@ -91,6 +91,7 @@ public class Controlador implements ActionListener {
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(frmPrincipal, "Error al abrir el archivo");
             }
+            frmConsultar.getTxtTotal().setText(String.valueOf(objR.recaudoTotal()));
             abrirVentana(frmConsultar);
         }
         if(ae.getSource() == frmPrincipal.getOpcmSalir()){
@@ -123,44 +124,111 @@ public class Controlador implements ActionListener {
             {
                 String mensaje[] = ex.getMessage().split(":");
                 JOptionPane.showMessageDialog(frmPrincipal, "Error, se han introducido valores NO númericos " + mensaje[1]);
-                //Para que se ponga automaticamente la del sistema si la caga ajaj no se si ponerlo igual abajo
-                //Fecha fecha = new Fecha();
-                //debe haber una mejor solucion para esto : para que vuelva a preguntar
-                //frmRegistrar.getTxtDia().setText(String.valueOf(fecha.getDd()));
-                //frmRegistrar.getTxtMes().setText(String.valueOf(fecha.getMm()));
-                //frmRegistrar.getTxtAno().setText(String.valueOf(fecha.getAa()));
                 flag = true;
                 
             } catch (FormatoEntradaExcepcion ex) {
-                JOptionPane.showMessageDialog(frmPrincipal, ex.toString()); 
-                //Fecha fecha = new Fecha();
-                //frmRegistrar.getTxtDia().setText(String.valueOf(fecha.getDd()));
-                //frmRegistrar.getTxtMes().setText(String.valueOf(fecha.getMm()));
-                //frmRegistrar.getTxtAno().setText(String.valueOf(fecha.getAa()));
+                JOptionPane.showMessageDialog(frmPrincipal, ex.toString() + " (Fecha)"); 
                 flag = true;
             }
             //para poder aplicar la excepcion toca hacerle con set? siempre?
-            //como evitar que se registre y que no caiga el programa con la excepcion? Dejar que el user carrija...
-            if(flag == true)
-            {
-                JOptionPane.showMessageDialog(frmPrincipal, "Intente de nuevo"); 
-            }
+            
+            
            //tipo de afiliacón
         switch(frmRegistrar.getCmbAfiliacion().getSelectedIndex()){
             case 0:{
-               objP = new Sisben(frmRegistrar.getTxtIdentificacion().getText(),frmRegistrar.getTxtNombre().getText(),frmRegistrar.getTxtDireccion().getText(),frmRegistrar.getTxtTelefono().getText()); 
+                Sisben sis = new Sisben();
+                sis.setDireccion(frmRegistrar.getTxtDireccion().getText());
+                try {
+                    sis.setIdentificacion(frmRegistrar.getTxtIdentificacion().getText());
+                } catch (FormatoEntradaExcepcion ex) {
+                    JOptionPane.showMessageDialog(frmPrincipal, ex.toString() + " (Identificación)"); 
+                    flag = true;
+                }
+                try {
+                    sis.setNombre(frmRegistrar.getTxtNombre().getText());
+                } catch (FormatoEntradaExcepcion ex) {
+                    JOptionPane.showMessageDialog(frmPrincipal, ex.toString() + " (Nombre)"); 
+                    flag = true;
+                }
+                try {
+                    sis.setTelefono(frmRegistrar.getTxtTelefono().getText());
+                } catch (FormatoEntradaExcepcion ex) {
+                    JOptionPane.showMessageDialog(frmPrincipal, ex.toString() + " (Telefono)"); 
+                    flag = true;
+                }
+                objP = sis;
                break;
             }
             case 1:{
-                objP = new TipoA(frmRegistrar.getTxtIdentificacion().getText(),frmRegistrar.getTxtNombre().getText(),frmRegistrar.getTxtDireccion().getText(),frmRegistrar.getTxtTelefono().getText());
+                TipoA ta = new TipoA();
+                ta.setDireccion(frmRegistrar.getTxtDireccion().getText());
+                try {
+                    ta.setIdentificacion(frmRegistrar.getTxtIdentificacion().getText());
+                } catch (FormatoEntradaExcepcion ex) {
+                    JOptionPane.showMessageDialog(frmPrincipal, ex.toString() + " (Identificación)"); 
+                    flag = true;
+                }
+                try {
+                    ta.setNombre(frmRegistrar.getTxtNombre().getText());
+                } catch (FormatoEntradaExcepcion ex) {
+                    JOptionPane.showMessageDialog(frmPrincipal, ex.toString() + " (Nombre)"); 
+                    flag = true;
+                }
+                try {
+                    ta.setTelefono(frmRegistrar.getTxtTelefono().getText());
+                } catch (FormatoEntradaExcepcion ex) {
+                    JOptionPane.showMessageDialog(frmPrincipal, ex.toString() + " (Telefono)"); 
+                    flag = true;
+                }
+                objP = ta;
                 break;
             }
             case 2:{
-                objP = new TipoB(frmRegistrar.getTxtIdentificacion().getText(),frmRegistrar.getTxtNombre().getText(),frmRegistrar.getTxtDireccion().getText(),frmRegistrar.getTxtTelefono().getText());
+                TipoB tb = new TipoB();
+                tb.setDireccion(frmRegistrar.getTxtDireccion().getText());
+                try {
+                    tb.setIdentificacion(frmRegistrar.getTxtIdentificacion().getText());
+                } catch (FormatoEntradaExcepcion ex) {
+                    JOptionPane.showMessageDialog(frmPrincipal, ex.toString() + " (Identificación)"); 
+                    flag = true;
+                }
+                try {
+                    tb.setNombre(frmRegistrar.getTxtNombre().getText());
+                } catch (FormatoEntradaExcepcion ex) {
+                    JOptionPane.showMessageDialog(frmPrincipal, ex.toString() + " (Nombre)"); 
+                    flag = true;
+                }
+                try {
+                    tb.setTelefono(frmRegistrar.getTxtTelefono().getText());
+                } catch (FormatoEntradaExcepcion ex) {
+                    JOptionPane.showMessageDialog(frmPrincipal, ex.toString() + " (Telefono)"); 
+                    flag = true;
+                }
+                objP = tb;
                 break;
             }
             case 3:{
-                objP = new TipoC(frmRegistrar.getTxtIdentificacion().getText(),frmRegistrar.getTxtNombre().getText(),frmRegistrar.getTxtDireccion().getText(),frmRegistrar.getTxtTelefono().getText());
+                TipoC tc = new TipoC();
+                tc.setDireccion(frmRegistrar.getTxtDireccion().getText());
+                try {
+                    tc.setIdentificacion(frmRegistrar.getTxtIdentificacion().getText());
+                } catch (FormatoEntradaExcepcion ex) {
+                    JOptionPane.showMessageDialog(frmPrincipal, ex.toString() + " (Identificación)"); 
+                    flag = true;
+                }
+                try {
+                    tc.setNombre(frmRegistrar.getTxtNombre().getText());
+                } catch (FormatoEntradaExcepcion ex) {
+                    JOptionPane.showMessageDialog(frmPrincipal, ex.toString() + " (Nombre)"); 
+                    flag = true;
+                }
+                try {
+                    tc.setTelefono(frmRegistrar.getTxtTelefono().getText());
+                } catch (FormatoEntradaExcepcion ex) {
+                    JOptionPane.showMessageDialog(frmPrincipal, ex.toString() + " (Telefono)"); 
+                    flag = true;
+                }
+                objP = tc;
                 break;
             }
         }
@@ -205,21 +273,37 @@ public class Controlador implements ActionListener {
             historia.setDtsServicio(objS);
             objR.getListaH().add(historia);//adición a la lista
             JOptionPane.showMessageDialog(frmPrincipal, "Historia Clinica Registrada");
+            //objR.getListaH().add(historia);//adición a la lista
+            //JOptionPane.showMessageDialog(frmPrincipal, "Historia Clinica Registrada");
+            if( !(objR.getListaH().get(objR.getListaH().size()-1).getDtsServicio() instanceof Laboratorios)){
+                try{
+                    String msj = datos(objR.getListaH().size()-1);
+                    con.EscribeDatos(msj, "RegistroHospital.txt");
+                }catch(IOException ex){
+                    JOptionPane.showMessageDialog(frmConsultar, "Error al abrir el archivo");
+                }   
+
+            }
+            //limpieza porque no hay jPanle
+            frmRegistrar.getTxtNro().setText("");
+            frmRegistrar.getTxtAno().setText("");
+            frmRegistrar.getTxtDia().setText("");
+            frmRegistrar.getTxtMes().setText("");
+            frmRegistrar.getTxtIdentificacion().setText("");
+            frmRegistrar.getTxtTelefono().setText("");
+            frmRegistrar.getTxtaDescripcion().setText("");
+            frmRegistrar.getTxtCodigo().setText("");
+            frmRegistrar.getTxtDireccion().setText("");
+            frmRegistrar.getTxtNombre().setText("");
         }
         
         //objR.getListaH().get(objR.getListaH().size()-1).setDtsServicio(objS);
-        objR.getListaH().add(historia);//adición a la lista
-        JOptionPane.showMessageDialog(frmPrincipal, "Historia Clinica Registrada");
-        if( !(objR.getListaH().get(objR.getListaH().size()-1).getDtsServicio() instanceof Laboratorios)){
-            try{
-                String msj = datos(objR.getListaH().size()-1);
-                con.EscribeDatos(msj, "RegistroHospital.txt");
-            }catch(IOException ex){
-                JOptionPane.showMessageDialog(frmConsultar, "Error al abrir el archivo");
-            }   
         
+        if(flag == true)
+        {
+                JOptionPane.showMessageDialog(frmPrincipal, "Paciente no registrado");
+                flag = false;
         }
-        
         }
      if(ae.getSource() == frmExamenes.getBtnAgregar()){
          Examen ex = null;

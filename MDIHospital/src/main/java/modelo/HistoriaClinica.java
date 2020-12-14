@@ -54,8 +54,15 @@ public class HistoriaClinica {
      *Establece o modifica el numero de la historia clinica
      * @param NroHistoria numero de la historia clinica
      */
-    public void setNroHistoria(String NroHistoria) {
-        this.NroHistoria = NroHistoria;
+    public void setNroHistoria(String NroHistoria) throws FormatoEntradaExcepcion {
+        if(NroHistoria.equals(""))
+        {
+            throw new FormatoEntradaExcepcion(101);
+        }
+        else
+        {
+           this.NroHistoria = NroHistoria; 
+        }
     }
 
     /**
@@ -87,7 +94,6 @@ public class HistoriaClinica {
         {
             this.fecha = fecha;
         }
-        
     }
 
     /**
@@ -217,7 +223,7 @@ public class HistoriaClinica {
             dias = (hops.getSalida().getDd()-(hops.getIngreso().getDd()));
             JOptionPane.showMessageDialog(null, "Menos de un mes en hospitalizacion2");
         }
-        if(dtsServicio.tiposervicio().equalsIgnoreCase("Hospitalizacion")){
+        if(dtsServicio.tiposervicio().equalsIgnoreCase("Hospitalizacion") && dias>0){
             switch (dtsPaciente.afiliacion()) {
                 case 'A':
                     return dias*30000;

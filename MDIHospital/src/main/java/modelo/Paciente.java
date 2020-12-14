@@ -5,6 +5,9 @@
  */
 package modelo;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  *
  * @author dadxc
@@ -67,8 +70,21 @@ public abstract class Paciente {
      *establece o modifica la identificacion del paciente
      * @param identificacion identificacion del paciente
      */
-    public void setIdentificacion(String identificacion) {
-        this.identificacion = identificacion;
+    public void setIdentificacion(String identificacion) throws FormatoEntradaExcepcion {
+        Pattern pat2 = Pattern.compile("[1-9]");
+        Matcher mat2 = pat2.matcher(identificacion);
+        if(identificacion.equals(""))
+        {
+            throw new FormatoEntradaExcepcion(101);
+        }
+        else if(!mat2.find())
+        {
+            throw new FormatoEntradaExcepcion(103);//solo núemros
+        }
+        else
+        {
+            this.identificacion = identificacion;
+        }  
     }
 
     /**
@@ -82,9 +98,24 @@ public abstract class Paciente {
     /**
      *establece o modifica el nombre del paciente
      * @param nombre nombre del paciente
+     * @throws modelo.FormatoEntradaExcepcion nulo o números no valido
      */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String nombre) throws FormatoEntradaExcepcion {
+        Pattern pat = Pattern.compile("[1-9]");
+        Matcher mat = pat.matcher(nombre);
+        
+        if(nombre.equals(""))
+        {
+            throw new FormatoEntradaExcepcion(101);
+        }
+        else if(mat.find())
+        {
+            throw new FormatoEntradaExcepcion(102);
+        }
+        else
+        {
+            this.nombre = nombre;
+        }  
     }
 
     /**
@@ -114,9 +145,29 @@ public abstract class Paciente {
     /**
      *establece o modifica el telefono del paciente
      * @param telefono telefono del paciente
+     * @throws modelo.FormatoEntradaExcepcion el telefono debe tener 7 o 10 numeros
      */
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setTelefono(String telefono) throws FormatoEntradaExcepcion {
+        Pattern pat = Pattern.compile("\\d{7,10}");
+        Matcher mat = pat.matcher(telefono);
+        Pattern pat2 = Pattern.compile("[1-9]");
+        Matcher mat2 = pat2.matcher(telefono);
+        if(telefono.equals(""))
+        {
+            throw new FormatoEntradaExcepcion(101);
+        }
+        else if(!mat.find())
+        {
+            throw new FormatoEntradaExcepcion(104);//tamaño cadena
+        }
+        else if(!mat2.find())
+        {
+            throw new FormatoEntradaExcepcion(103);//solo núemros
+        }
+        else
+        {
+            this.telefono = telefono;
+        }  
     }
 
     /**

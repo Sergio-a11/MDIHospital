@@ -32,7 +32,12 @@ public class FormatoEntradaExcepcion extends Exception {
                 this.msg = "Campo dedicado unicamente a letras";
                 break;
             }
-            case 103://tamaño cadena
+            case 103:
+            {
+                this.msg = "Campo dedicado unicamente a números";
+                break;
+            }
+            case 104://tamaño cadena
             {
                 this.msg = "Se ha superado el numero de caracteres maximo";
                 break;
