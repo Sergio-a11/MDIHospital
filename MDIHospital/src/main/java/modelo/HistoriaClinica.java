@@ -219,15 +219,6 @@ public class HistoriaClinica {
         dias1 = (hops.getSalida().getAa()*360)+(hops.getSalida().getMm()*30)+(hops.getSalida().getDd());
         dias2 = (hops.getIngreso().getAa()*360)+(hops.getIngreso().getMm()*30)+(hops.getIngreso().getDd());
         aux = dias1 - dias2;
-        /*if((hops.getSalida().getMm()-hops.getIngreso().getMm())> 1){
-            dias = (((hops.getSalida().getMm()-hops.getIngreso().getMm())*30)-60)+(hops.getSalida().getDd()-(30-hops.getIngreso().getDd()));
-        }else if((hops.getSalida().getMm()-hops.getIngreso().getMm())== 1){
-            dias = (hops.getSalida().getDd()+(30-hops.getIngreso().getDd()));
-            JOptionPane.showMessageDialog(null, "Menos de un mes en hospitalizacion1");
-        }else{
-            dias = (hops.getSalida().getDd()-(hops.getIngreso().getDd()));
-            JOptionPane.showMessageDialog(null, "Menos de un mes en hospitalizacion2");
-        }*/
         if(dtsServicio.tiposervicio().equalsIgnoreCase("Hospitalizacion") && aux>0){
             switch (dtsPaciente.afiliacion()) {
                 case 'A':
