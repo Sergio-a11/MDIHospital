@@ -48,12 +48,10 @@ public class Controlador implements ActionListener {
         frmPrincipal.getPndEscritorio().add(frmRegistrar);
         frmPrincipal.getPndEscritorio().add(frmExamenes);
         frmPrincipal.getPndEscritorio().add(frmConsultar);
-        //frmPrincipal.getPndEscritorio().add(frmBuscar);//En desarrollo
         this.frmPrincipal.getOpcmRegistrar().addActionListener(this);
         this.frmPrincipal.getOpcmConsultar().addActionListener(this);
-        this.frmPrincipal.getOpcmBuscar().addActionListener(this);
         this.frmPrincipal.getOpcmSalir().addActionListener(this);
-        this.frmRegistrar.getBtnFechaSistema().addActionListener(this);//En desarrollo
+        this.frmRegistrar.getBtnFechaSistema().addActionListener(this);
         this.frmRegistrar.getBtnRegistrar().addActionListener(this);
         this.frmExamenes.getBtnAgregar().addActionListener(this);
         this.frmExamenes.getBtnFinalizar().addActionListener(this);

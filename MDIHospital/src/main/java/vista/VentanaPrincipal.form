@@ -32,14 +32,6 @@
                 <Property name="text" type="java.lang.String" value="Consultar"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="opcmBuscar">
-              <Properties>
-                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
-                  <KeyStroke key="Ctrl+B"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Buscar"/>
-              </Properties>
-            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="MainMenuSalir">

@@ -40,7 +40,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         opcmRegistrar = new javax.swing.JMenuItem();
         MainMenuConsultar = new javax.swing.JMenu();
         opcmConsultar = new javax.swing.JMenuItem();
-        opcmBuscar = new javax.swing.JMenuItem();
         MainMenuSalir = new javax.swing.JMenu();
         opcmSalir = new javax.swing.JMenuItem();
 
@@ -65,10 +64,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         opcmConsultar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         opcmConsultar.setText("Consultar");
         MainMenuConsultar.add(opcmConsultar);
-
-        opcmBuscar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        opcmBuscar.setText("Buscar");
-        MainMenuConsultar.add(opcmBuscar);
 
         mnBarra.add(MainMenuConsultar);
 
@@ -139,14 +134,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         this.mnBarra = mnBarra;
     }
 
-    public JMenuItem getOpcmBuscar() {
-        return opcmBuscar;
-    }
-
-    public void setOpcmBuscar(JMenuItem opcmBuscar) {
-        this.opcmBuscar = opcmBuscar;
-    }
-
     public JMenuItem getOpcmConsultar() {
         return opcmConsultar;
     }
@@ -186,7 +173,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu MainMenuRegistrar;
     private javax.swing.JMenu MainMenuSalir;
     private javax.swing.JMenuBar mnBarra;
-    private javax.swing.JMenuItem opcmBuscar;
     private javax.swing.JMenuItem opcmConsultar;
     private javax.swing.JMenuItem opcmRegistrar;
     private javax.swing.JMenuItem opcmSalir;
