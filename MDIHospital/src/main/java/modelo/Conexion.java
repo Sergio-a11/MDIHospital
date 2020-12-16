@@ -12,25 +12,59 @@ import java.io.*;
  * @author Estudiante
  */
 public class Conexion {
-  protected BufferedReader ent ;
- protected FileReader archLee;
- protected FileWriter archEscr;
- protected PrintWriter sal; 
 
+    /**
+     *
+     */
+    protected BufferedReader ent ;
+
+    /**
+     *
+     */
+    protected FileReader archLee;
+
+    /**
+     *
+     */
+    protected FileWriter archEscr;
+ 
+    /**
+     *
+     */
+    protected PrintWriter sal; 
+
+    /**
+     *
+     * @param ent entrada para leer
+     * @param archLee lector del archivo
+     * @param archEscr escritor del archivo
+     * @param sal salida para escrivir
+     */
     public Conexion(BufferedReader ent, FileReader archLee, FileWriter archEscr, PrintWriter sal) {
         this.ent = ent;
         this.archLee = archLee;
         this.archEscr = archEscr;
         this.sal = sal;
     }
-  public Conexion() throws IOException {
+
+    /**
+     *
+     * @throws IOException
+     */
+    public Conexion() throws IOException {
        // this.ent = ent;
        this.archLee = null;
        this.archEscr = null;
        // this.sal = sal;
     }
   
-  public String leerDatos(String nomArchivo) throws IOException{
+    /**
+     *
+     * @param nomArchivo nombre del archivo
+     * @return String
+     * @throws IOException
+     */
+    public String leerDatos(String nomArchivo) throws IOException{
   //System.out.println("Entré...");
    this.archLee = new FileReader(nomArchivo);
    ent = new BufferedReader(archLee);
@@ -44,7 +78,14 @@ public class Conexion {
     ent.close();
     return datos;
  }
- public void EscribeDatos(String datos, String nomArchivo) throws IOException
+
+    /**
+     *
+     * @param datos datos a escribir en el archivo
+     * @param nomArchivo nombre del archivo
+     * @throws IOException
+     */
+    public void EscribeDatos(String datos, String nomArchivo) throws IOException
  { 
    archEscr= new FileWriter(nomArchivo,true);
    sal = new PrintWriter(archEscr);

@@ -494,6 +494,10 @@ public class Controlador implements ActionListener {
         
     }*/
     
+    /*
+    *Metodo para visualizar los datos en la tabla y obtener el total
+    *@param tabla tabla donde se visualizan los datos
+    */
     public void agregarDatosPersistencia(JTable tabla) throws IOException{
         DefaultTableModel plantilla = (DefaultTableModel) tabla.getModel();
         plantilla.setRowCount(0);
@@ -532,6 +536,11 @@ public class Controlador implements ActionListener {
         }     
     }
     
+    /*
+    *Metodo para guardar todos los datos del archivo en la tabla del formulario
+    *@param datos un string que contiene todo lo leido en del archivo
+    *@param tabla para tener la referencia de donde almacenar los datos 
+    */
     public void archivoTabla(String datos, JTable tabla){
         this.total = 0;
         DefaultTableModel plantilla = (DefaultTableModel) tabla.getModel();
@@ -548,6 +557,11 @@ public class Controlador implements ActionListener {
         }
     }
     
+    /*
+    *metodo para obtener los datos especificos que guardaremos dentro del archivo
+    *@param i para saber dentro de la lista de historiales clinicos cual usar
+    *retunr String
+    */
     public String datos(int i){
         String msj = "";
         if(objR.getListaH().get(i).getDtsServicio()instanceof CitaMedGenr || objR.getListaH().get(i).getDtsServicio()instanceof Vacunacion){
