@@ -69,6 +69,7 @@ public class VentanaRegistrar extends javax.swing.JInternalFrame {
         btnFechaSistema = new javax.swing.JButton();
 
         setClosable(true);
+        setResizable(true);
 
         lblNro.setText("Numero Registro:");
 

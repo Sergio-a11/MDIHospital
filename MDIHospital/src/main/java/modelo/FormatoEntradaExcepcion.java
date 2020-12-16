@@ -42,6 +42,11 @@ public class FormatoEntradaExcepcion extends Exception {
                 this.msg = "Se ha superado el numero de caracteres maximo";
                 break;
             }
+            case 105:
+            {
+                this.msg = "El dato debe estar en el rango [7,10] números";
+                break;
+            }
             case 201://fecha formato
             {
                 this.msg = "La fecha debe tener formato: dd/mm/aaaa";

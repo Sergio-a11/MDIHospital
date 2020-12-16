@@ -58,9 +58,17 @@ public abstract class  Servicio {
     /**
      *establece o modifica el codigo del servicio
      * @param Codigo codigo del servicio
+     * @throws modelo.FormatoEntradaExcepcion excepción nulo
      */
-    public void setCodigo(String Codigo) {
-        this.Codigo = Codigo;
+    public void setCodigo(String Codigo) throws FormatoEntradaExcepcion {
+        if(Codigo.equals(""))
+        {
+            throw new FormatoEntradaExcepcion(101);
+        }
+        else
+        {
+           this.Codigo = Codigo;
+        }
     }
 
     /**
@@ -90,9 +98,17 @@ public abstract class  Servicio {
     /**
      *Establece o modifica la descripcion respectiva del servicio
      * @param Descripcion descripcion del servicio
+     * @throws modelo.FormatoEntradaExcepcion excepción nulo
      */
-    public void setDescripcion(String Descripcion) {
-        this.Descripcion = Descripcion;
+    public void setDescripcion(String Descripcion) throws FormatoEntradaExcepcion {
+        if(Codigo.equals(""))
+        {
+            throw new FormatoEntradaExcepcion(101);
+        }
+        else
+        {
+           this.Descripcion = Descripcion;
+        }
     }
 
     /**

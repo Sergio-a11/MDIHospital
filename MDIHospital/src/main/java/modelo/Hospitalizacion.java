@@ -50,6 +50,7 @@ public class Hospitalizacion extends Servicio{
     /**
      * Método para modifica la fecha de ingreso como dato Fecha, compuesto de enteros
      * @param Ingreso fecha de ingreso, tipo Fecha compuesto de enteros
+     * @throws modelo.FormatoEntradaExcepcion excepción, nulo, y modelo de fecha
      */
     public void setIngreso(Fecha Ingreso) throws FormatoEntradaExcepcion {
         String fecha = String.valueOf(Ingreso);
@@ -60,7 +61,7 @@ public class Hospitalizacion extends Servicio{
         {
             throw new FormatoEntradaExcepcion(101);
         }
-        else if(mat.find())
+        else if(!mat.find())
         {
             throw new FormatoEntradaExcepcion(201);
         }
@@ -81,9 +82,26 @@ public class Hospitalizacion extends Servicio{
     /**
      * Método para modificar la fecha de salida como dato Fecha, compuesto de enteros
      * @param Salida fecha de salida, tipo Fecha compuesto de enteros
+     * @throws modelo.FormatoEntradaExcepcion excepción formato fecha
      */
-    public void setSalida(Fecha Salida) {
-        this.Salida = Salida;
+    public void setSalida(Fecha Salida) throws FormatoEntradaExcepcion {
+        String fe = String.valueOf(Salida);
+        Pattern pat = Pattern.compile("\\d{1,2}/\\d{1,2}/\\d{4}");
+        Matcher mat = pat.matcher(fe);
+        
+        if(fe.equals(""))
+        {
+            throw new FormatoEntradaExcepcion(101);
+        }
+        else if(!mat.find())
+        {
+            throw new FormatoEntradaExcepcion(201);
+        }
+        else
+        {
+            this.Salida = Salida;
+        }
+        
     }
     
     /**

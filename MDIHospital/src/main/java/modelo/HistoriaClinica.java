@@ -5,10 +5,8 @@
  */
 package modelo;
 
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -53,6 +51,7 @@ public class HistoriaClinica {
     /**
      *Establece o modifica el numero de la historia clinica
      * @param NroHistoria numero de la historia clinica
+     * @throws modelo.FormatoEntradaExcepcion excepción nulo
      */
     public void setNroHistoria(String NroHistoria) throws FormatoEntradaExcepcion {
         if(NroHistoria.equals(""))
@@ -76,13 +75,14 @@ public class HistoriaClinica {
     /**
      *establece o modifica la fecha de la historia clinica
      * @param fecha objeto fecha de la fecha de la historia clinica
+     * @throws modelo.FormatoEntradaExcepcion excepción formato fecha
      */
     public void setFecha(Fecha fecha) throws FormatoEntradaExcepcion {
         String fe = String.valueOf(fecha);
         Pattern pat = Pattern.compile("\\d{1,2}/\\d{1,2}/\\d{4}");
         Matcher mat = pat.matcher(fe);
         
-        if(fecha.equals(""))
+        if(fecha.toString().equals(""))
         {
             throw new FormatoEntradaExcepcion(101);
         }
@@ -216,8 +216,8 @@ public class HistoriaClinica {
         long dias1= 0;
         long dias2= 0;
         long aux=0;
-        dias1 = (hops.getSalida().getAa()*360)+(hops.getSalida().getMm()*30)+(hops.getSalida().getDd());
-        dias2 = (hops.getIngreso().getAa()*360)+(hops.getIngreso().getMm()*30)+(hops.getIngreso().getDd());
+        dias1 = (hops.getSalida().getAa()*365)+(hops.getSalida().getMm()*30)+(hops.getSalida().getDd());
+        dias2 = (hops.getIngreso().getAa()*365)+(hops.getIngreso().getMm()*30)+(hops.getIngreso().getDd());
         aux = dias1 - dias2;
         if(dtsServicio.tiposervicio().equalsIgnoreCase("Hospitalizacion") && aux>0){
             switch (dtsPaciente.afiliacion()) {

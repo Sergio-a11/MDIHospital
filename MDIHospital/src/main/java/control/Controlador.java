@@ -37,6 +37,7 @@ public class Controlador implements ActionListener {
 
     /**
      * Controlador básico, inicialización de las ventanas, variables y actionListener
+     * @throws java.io.IOException control de excepciones
      */
     public Controlador() throws IOException {
         this.objR = new Registros();
@@ -135,7 +136,12 @@ public class Controlador implements ActionListener {
         switch(frmRegistrar.getCmbAfiliacion().getSelectedIndex()){
             case 0:{
                 Sisben sis = new Sisben();
-                sis.setDireccion(frmRegistrar.getTxtDireccion().getText());
+                try {
+                    sis.setDireccion(frmRegistrar.getTxtDireccion().getText());
+                } catch (FormatoEntradaExcepcion ex) {
+                    JOptionPane.showMessageDialog(frmPrincipal, ex.toString() + " (Dirección)"); 
+                    flag = true;
+                }
                 try {
                     sis.setIdentificacion(frmRegistrar.getTxtIdentificacion().getText());
                 } catch (FormatoEntradaExcepcion ex) {
@@ -159,7 +165,12 @@ public class Controlador implements ActionListener {
             }
             case 1:{
                 TipoA ta = new TipoA();
-                ta.setDireccion(frmRegistrar.getTxtDireccion().getText());
+                try {
+                    ta.setDireccion(frmRegistrar.getTxtDireccion().getText());
+                } catch (FormatoEntradaExcepcion ex) {
+                    JOptionPane.showMessageDialog(frmPrincipal, ex.toString() + " (Dirección)"); 
+                    flag = true;
+                }
                 try {
                     ta.setIdentificacion(frmRegistrar.getTxtIdentificacion().getText());
                 } catch (FormatoEntradaExcepcion ex) {
@@ -183,7 +194,12 @@ public class Controlador implements ActionListener {
             }
             case 2:{
                 TipoB tb = new TipoB();
-                tb.setDireccion(frmRegistrar.getTxtDireccion().getText());
+                try {
+                    tb.setDireccion(frmRegistrar.getTxtDireccion().getText());
+                } catch (FormatoEntradaExcepcion ex) {
+                    JOptionPane.showMessageDialog(frmPrincipal, ex.toString() + " (Dirección)"); 
+                    flag = true;
+                }
                 try {
                     tb.setIdentificacion(frmRegistrar.getTxtIdentificacion().getText());
                 } catch (FormatoEntradaExcepcion ex) {
@@ -207,7 +223,12 @@ public class Controlador implements ActionListener {
             }
             case 3:{
                 TipoC tc = new TipoC();
-                tc.setDireccion(frmRegistrar.getTxtDireccion().getText());
+                try {
+                    tc.setDireccion(frmRegistrar.getTxtDireccion().getText());
+                } catch (FormatoEntradaExcepcion ex) {
+                    JOptionPane.showMessageDialog(frmPrincipal, ex.toString() + " (Dirección)"); 
+                    flag = true;
+                }
                 try {
                     tc.setIdentificacion(frmRegistrar.getTxtIdentificacion().getText());
                 } catch (FormatoEntradaExcepcion ex) {
@@ -230,44 +251,103 @@ public class Controlador implements ActionListener {
                 break;
             }
         }
-        if(flag == false)
-        {
-            historia.setDtsPaciente(objP);
-        }
         
         //objR.getListaH().get(objR.getListaH().size()-1).setDtsPaciente(objP);
         switch(frmRegistrar.getCmbTipoServicio().getSelectedIndex()){
             case 0:{
-               objS = new CitaMedGenr(frmRegistrar.getTxtCodigo().getText(), "Cita Medicina General", frmRegistrar.getTxtaDescripcion().getText()); 
-               break;
+               //objS = new CitaMedGenr(frmRegistrar.getTxtCodigo().getText(), "Cita Medicina General", frmRegistrar.getTxtaDescripcion().getText()); 
+                CitaMedGenr med = new CitaMedGenr();
+                try {
+                    med.setCodigo(frmRegistrar.getTxtCodigo().getText());
+                } catch (FormatoEntradaExcepcion ex) {
+                    JOptionPane.showMessageDialog(frmPrincipal, ex.toString() + " (Cod Servicio)"); 
+                    flag = true;
+                }
+                med.setNombre("Cita Medicina General");
+                try {
+                    med.setDescripcion(frmRegistrar.getTxtaDescripcion().getText());
+                } catch (FormatoEntradaExcepcion ex) {
+                    JOptionPane.showMessageDialog(frmPrincipal, ex.toString() + " (Nom Servicio)"); 
+                    flag = true;
+                }
+                objS = med;
+                break;
             }
             case 1:{
-               objS = new Vacunacion(frmRegistrar.getTxtCodigo().getText(), "Vacunacion", frmRegistrar.getTxtaDescripcion().getText()); 
+               //objS = new Vacunacion(frmRegistrar.getTxtCodigo().getText(), "Vacunacion", frmRegistrar.getTxtaDescripcion().getText()); 
+                Vacunacion vac = new Vacunacion();
+                try {
+                    vac.setCodigo(frmRegistrar.getTxtCodigo().getText());
+                } catch (FormatoEntradaExcepcion ex) {
+                    JOptionPane.showMessageDialog(frmPrincipal, ex.toString() + " (Cod Servicio)"); 
+                    flag = true;
+                }
+                vac.setNombre("Vacunacion");
+                try {
+                    vac.setDescripcion(frmRegistrar.getTxtaDescripcion().getText());
+                } catch (FormatoEntradaExcepcion ex) {
+                    JOptionPane.showMessageDialog(frmPrincipal, ex.toString() + " (Nom Servicio)"); 
+                    flag = true;
+                }
+               objS = vac;
                break;
             }
             case 2:{
-               abrirVentana(frmExamenes);
-               objS = new Laboratorios(examenes,frmRegistrar.getTxtCodigo().getText(), "Laboratorio", frmRegistrar.getTxtaDescripcion().getText());
+                    abrirVentana(frmExamenes);
+                Laboratorios lab = new Laboratorios(examenes, null, null, null);
+                try {
+                    lab.setCodigo(frmRegistrar.getTxtCodigo().getText());
+                } catch (FormatoEntradaExcepcion ex) {
+                    JOptionPane.showMessageDialog(frmPrincipal, ex.toString() + " (Cod Servicio)"); 
+                    flag = true;
+                }
+                lab.setNombre("Laboratorio");
+                try {
+                    lab.setDescripcion(frmRegistrar.getTxtaDescripcion().getText());
+                } catch (FormatoEntradaExcepcion ex) {
+                    JOptionPane.showMessageDialog(frmPrincipal, ex.toString() + " (Nom Servicio)"); 
+                    flag = true;
+                }
+                objS = lab;
+               //objS = new Laboratorios(examenes,frmRegistrar.getTxtCodigo().getText(), "Laboratorio", frmRegistrar.getTxtaDescripcion().getText());
             break;
             }
             case 3:{
                 try{
-                objS = new Hospitalizacion(new Fecha(Integer.parseInt(frmRegistrar.getTxtDia().getText()),Integer.parseInt(frmRegistrar.getTxtMes().getText()),Integer.parseInt(frmRegistrar.getTxtAno().getText())),
+                Hospitalizacion hos = new Hospitalizacion();
+                Fecha entrada = new Fecha(Integer.parseInt(frmRegistrar.getTxtDia().getText()),Integer.parseInt(frmRegistrar.getTxtMes().getText()),Integer.parseInt(frmRegistrar.getTxtAno().getText()));
+                hos.setIngreso(entrada);
+                Fecha salida = new Fecha(Integer.parseInt(JOptionPane.showInputDialog(frmRegistrar,"Dia de salida:","Ingrese fecha de salida [formato dd]",1)),
+                                         Integer.parseInt(JOptionPane.showInputDialog(frmRegistrar,"Mes de salida:","Ingrese fecha de salida [formato mm]",1)),
+                                         Integer.parseInt(JOptionPane.showInputDialog(frmRegistrar,"Año de salida:","Ingrese fecha de salida [formato aaaa]",1)));
+                hos.setSalida(salida);
+                hos.setCodigo(frmRegistrar.getTxtCodigo().getText());
+                hos.setNombre("Hospitalizacion");
+                hos.setDescripcion(frmRegistrar.getTxtaDescripcion().getText());
+                
+                /*objS = new Hospitalizacion(new Fecha(Integer.parseInt(frmRegistrar.getTxtDia().getText()),Integer.parseInt(frmRegistrar.getTxtMes().getText()),Integer.parseInt(frmRegistrar.getTxtAno().getText())),
                                            new Fecha(Integer.parseInt(JOptionPane.showInputDialog(frmRegistrar,"Dia de salida:","Ingrese fecha de salida",1)),
                                                      Integer.parseInt(JOptionPane.showInputDialog(frmRegistrar,"Mes de salida:","Ingrese fecha de salida",1)),
                                                      Integer.parseInt(JOptionPane.showInputDialog(frmRegistrar,"Año de salida:","Ingrese fecha de salida",1))), 
                                            frmRegistrar.getTxtCodigo().getText(), "Hospitalizacion", frmRegistrar.getTxtaDescripcion().getText());
+                */
+                objS = hos;
                 }
                 catch(NumberFormatException ex)
                 {
                     String mensaje[] = ex.getMessage().split(":");
                     JOptionPane.showMessageDialog(frmPrincipal, "Error, se han introducido valores NO númericos " + mensaje[1]);
+                    flag = true;
+                } catch (FormatoEntradaExcepcion ex) {
+                    JOptionPane.showMessageDialog(frmPrincipal, ex.toString() + " (Nom Fecha Salida)"); 
+                    flag = true;
                 }
             break;    
             }
         }
         if(flag == false)
         {
+            historia.setDtsPaciente(objP);
             historia.setDtsServicio(objS);
             objR.getListaH().add(historia);//adición a la lista
             JOptionPane.showMessageDialog(frmPrincipal, "Historia Clinica Registrada");
@@ -303,6 +383,7 @@ public class Controlador implements ActionListener {
                 flag = false;
         }
         }
+        
      if(ae.getSource() == frmExamenes.getBtnAgregar()){
          Examen ex = null;
                    if(frmExamenes.getBtnSangre().isSelected()){
@@ -347,7 +428,7 @@ public class Controlador implements ActionListener {
      * Método para agregar datos a la tabla de consulta de datos
      * @param tabla tabla a modificar
      */
-    public void agregarDatos(JTable tabla) throws IOException
+    /*public void agregarDatos(JTable tabla) throws IOException
     {
         String fig = "", ser = "";
         double aux1 = 0;
@@ -409,7 +490,7 @@ public class Controlador implements ActionListener {
         }
         frmConsultar.getTxtTotal().setText(""+objR.recaudoTotal());
         
-    }
+    }*/
     
     public void agregarDatosPersistencia(JTable tabla) throws IOException{
         DefaultTableModel plantilla = (DefaultTableModel) tabla.getModel();

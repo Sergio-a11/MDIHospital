@@ -69,6 +69,7 @@ public abstract class Paciente {
     /**
      *establece o modifica la identificacion del paciente
      * @param identificacion identificacion del paciente
+     * @throws modelo.FormatoEntradaExcepcion excepción nulo, campo númerico
      */
     public void setIdentificacion(String identificacion) throws FormatoEntradaExcepcion {
         Pattern pat2 = Pattern.compile("[1-9]");
@@ -130,8 +131,15 @@ public abstract class Paciente {
      *establece o modifica la direccion del paciente
      * @param direccion direccion del paciente
      */
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setDireccion(String direccion) throws FormatoEntradaExcepcion {
+        if(direccion.equals(""))
+        {
+            throw new FormatoEntradaExcepcion(101);
+        }
+        else
+        {
+            this.direccion = direccion;
+        }
     }
 
     /**
@@ -158,7 +166,7 @@ public abstract class Paciente {
         }
         else if(!mat.find())
         {
-            throw new FormatoEntradaExcepcion(104);//tamaño cadena
+            throw new FormatoEntradaExcepcion(105);//tamaño cadena
         }
         else if(!mat2.find())
         {
