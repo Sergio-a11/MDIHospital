@@ -130,6 +130,7 @@ public abstract class Paciente {
     /**
      *establece o modifica la direccion del paciente
      * @param direccion direccion del paciente
+     * @throws modelo.FormatoEntradaExcepcion excepción nulo
      */
     public void setDireccion(String direccion) throws FormatoEntradaExcepcion {
         if(direccion.equals(""))
