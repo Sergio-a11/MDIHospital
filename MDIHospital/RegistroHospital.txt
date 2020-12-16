@@ -1,16 +1,3 @@
-1;13/12/2020;Sergio Andres;10000;asdaca;2312323;A;Laboratorios;1000.0
-;13/12/2020;sergio;;;;S;Cita Medicina General;0.0
-12;13/12/2020;sereg;121212;sadsa;1212;A;Hospitalizacion;-30000.0
-12;13/12/2029;sere9;121212;sadsa;1212;A;Hospitalizacion;90000.0
-1;13/12/2020;asdsadsa;121212;sadasd;121212;S;Cita Medicina General;0.0
-1;13/12/2020;sdsda;121121;asdsadsa;121212;S;Cita Medicina General;0.0
-12121212;13/12/2020;uno;12121212;sadsad;1;S;Cita Medicina General;0.0
-1212;13/12/2020;sadsad;1212;asd;122;S;Cita Medicina General;0.0
-1;13/12/2020;asdsa;232;asda;11111111;S;Cita Medicina General;0.0
-1;13/12/2020;Sergio;1212112;saddsad;1212121;B;Cita Medicina General;10000.0
-1;13/12/2020;dan;222222222;22;123456789;B;Cita Medicina General;10000.0
-12;13/12/2020;aaaa;12121221;1212;1212121;A;Hospitalizacion;30000.0
-343;13/12/2020;ccc;312321;asada;12122222;C;Hospitalizacion;140000.0
 12;15/12/2020;Daniel;123;av robles;3124176642;S;Cita Medicina General;0.0
 12;15/12/2020;Daniel;123456789;Av robles;3124176642;C;Hospitalizacion;700000.0
 125;10/8/2020;Sergio;123456789;soacha;3213750054;B;Hospitalizacion;2400000.0
@@ -21,4 +8,4 @@
 12;15/12/2020;Dan;111111111;asad;1234567890;C;Hospitalizacion;2240000.0
 434;15/12/2020;dan;3242;sfasfas;1234435543;B;Laboratorios;6000.0
 12;15/12/2020;pppp;1212312;asdsa;12345566779;B;Laboratorios;32500.0
-12;15/12/2020;sadsad;1231321243;dasdsada;2342343444343434;C;Hospitalizacion;2.534E7
+34;15/12/2020;Sergio;1000616161;asasda;32035260141;B;Hospitalizacion;1.46E7

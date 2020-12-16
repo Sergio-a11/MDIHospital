@@ -34,6 +34,7 @@ public class Controlador implements ActionListener {
     Hospitalizacion auxH;
     Laboratorios auxL;
     Conexion con;
+    long total;
 
     /**
      * Controlador básico, inicialización de las ventanas, variables y actionListener
@@ -64,6 +65,7 @@ public class Controlador implements ActionListener {
         examenes = new ArrayList<Examen>();
         auxH = new Hospitalizacion();
         auxL = new Laboratorios();
+        this.total = 0;
     }
     
     /**
@@ -90,7 +92,7 @@ public class Controlador implements ActionListener {
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(frmPrincipal, "Error al abrir el archivo");
             }
-            frmConsultar.getTxtTotal().setText(String.valueOf(objR.recaudoTotal()));
+            frmConsultar.getTxtTotal().setText(String.valueOf(this.total));
             abrirVentana(frmConsultar);
         }
         if(ae.getSource() == frmPrincipal.getOpcmSalir()){
@@ -531,6 +533,7 @@ public class Controlador implements ActionListener {
     }
     
     public void archivoTabla(String datos, JTable tabla){
+        this.total = 0;
         DefaultTableModel plantilla = (DefaultTableModel) tabla.getModel();
         String ListaHospital []=datos.split("\n");
         for (int i = 0; i < ListaHospital.length; i++) {
@@ -540,9 +543,11 @@ public class Controlador implements ActionListener {
                 historia[4], historia[5],
                 historia[6], historia[7],
                 Double.parseDouble(historia[8])};
+            this.total += Double.parseDouble(historia[8]);
             plantilla.addRow(fila);
         }
     }
+    
     public String datos(int i){
         String msj = "";
         if(objR.getListaH().get(i).getDtsServicio()instanceof CitaMedGenr || objR.getListaH().get(i).getDtsServicio()instanceof Vacunacion){
