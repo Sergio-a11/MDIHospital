@@ -290,7 +290,7 @@ public class VentanaRegistrar extends javax.swing.JInternalFrame {
                 .addComponent(spr3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRegistrar)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -587,6 +587,7 @@ public class VentanaRegistrar extends javax.swing.JInternalFrame {
     public void setTxtaDescripcion(JTextArea txtaDescripcion) {
         this.txtaDescripcion = txtaDescripcion;
     }
+
     
     
 

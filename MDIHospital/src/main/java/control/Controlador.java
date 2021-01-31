@@ -106,6 +106,7 @@ public class Controlador implements ActionListener {
             frmRegistrar.getTxtAno().setText(String.valueOf(fecha.getAa()));
         }
         if(ae.getSource() == frmRegistrar.getBtnRegistrar()){
+            ArchPdf pdf = new ArchPdf();
             HistoriaClinica historia = new HistoriaClinica();
             Paciente objP = null;
             Servicio objS = null;  
@@ -352,7 +353,9 @@ public class Controlador implements ActionListener {
             historia.setDtsPaciente(objP);
             historia.setDtsServicio(objS);
             objR.getListaH().add(historia);//adición a la lista
+            pdf.crear_PDF(historia);
             JOptionPane.showMessageDialog(frmPrincipal, "Historia Clinica Registrada");
+            JOptionPane.showMessageDialog(frmPrincipal, "Se ha generado un recibo en pdf");
             //objR.getListaH().add(historia);//adición a la lista
             //JOptionPane.showMessageDialog(frmPrincipal, "Historia Clinica Registrada");
             if( !(objR.getListaH().get(objR.getListaH().size()-1).getDtsServicio() instanceof Laboratorios)){
