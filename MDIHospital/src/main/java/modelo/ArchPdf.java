@@ -5,6 +5,7 @@
 
 package modelo;
 
+import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -12,6 +13,7 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.Barcode128;
+import com.itextpdf.text.pdf.BarcodeQRCode;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfWriter;
 //archivos
@@ -53,18 +55,26 @@ public class ArchPdf {
                 /*mipdf.addAuthor(a); // se añade el autor del documento
                 mipdf.addSubject(s); //se añade el asunto del documento
                 mipdf.addKeywords(k); //Se agregan palabras claves*/
-                mipdf.add(new Paragraph("Hospital Sergio Andres \n"));
+                mipdf.add(new Paragraph("Hospital MDI \n"));
+                String info = "";
                 if(hs.getDtsServicio() instanceof CitaMedGenr || hs.getDtsServicio() instanceof Vacunacion){
-                  mipdf.add(new Paragraph(hs.toString()+hs.valor()+"\n"));  
+                  mipdf.add(new Paragraph(hs.toString()+ "\nValor: " +hs.valor()+"\n")); 
+                  info += hs.toString()+ "\nValor: "+hs.valor()+"\n";
                 }
                 if(hs.getDtsServicio() instanceof Laboratorios){
-                  mipdf.add(new Paragraph(hs.toString()+hs.valorLAB((Laboratorios) hs.getDtsServicio())+"\n"));  
+                  mipdf.add(new Paragraph(hs.toString()+ "\nValor: " +hs.valorLAB((Laboratorios) hs.getDtsServicio())+"\n"));  
+                  info += hs.toString()+ "\nValor: " +hs.valorLAB((Laboratorios) hs.getDtsServicio())+"\n";
                 }
                 if(hs.getDtsServicio() instanceof Hospitalizacion){
-                  mipdf.add(new Paragraph(hs.toString()+hs.valorHOPS((Hospitalizacion)hs.getDtsServicio())+"\n"));  
+                  mipdf.add(new Paragraph(hs.toString()+ "\nValor: " +hs.valorHOPS((Hospitalizacion)hs.getDtsServicio())+"\n"));  
+                  info += hs.toString()+ "\nValor :"+hs.valorHOPS((Hospitalizacion)hs.getDtsServicio())+"\n";
                 }
+                //código de barras
                 mipdf.add(codBar(mipdf, pw, hs.getFecha()+"-"+hs.getDtsPaciente().getIdentificacion()));
+                //código QR
+                mipdf.add(QRcod(mipdf, info));
                 // se añade el contendio del PDF
+                
                 mipdf.close(); //se cierra el PDF&
                 JOptionPane.showMessageDialog(null,"Documento PDF creado");
             } catch (DocumentException ex) {
@@ -103,4 +113,11 @@ public class ArchPdf {
         this.ruta_destino = ruta_destino;
     }
     
+    public Image QRcod(Document doc, String InfoCod) throws BadElementException
+    {
+        BarcodeQRCode qrcode = new BarcodeQRCode(InfoCod, 300, 300, null);
+        Image img= qrcode.getImage();
+        img.setAlignment(Element.ALIGN_CENTER);
+        return img;
+    }
 }

@@ -353,15 +353,17 @@ public class Controlador implements ActionListener {
             historia.setDtsPaciente(objP);
             historia.setDtsServicio(objS);
             objR.getListaH().add(historia);//adición a la lista
-            pdf.crear_PDF(historia);
-            JOptionPane.showMessageDialog(frmPrincipal, "Historia Clinica Registrada");
-            JOptionPane.showMessageDialog(frmPrincipal, "Se ha generado un recibo en pdf");
+            //pdf.crear_PDF(historia);
+            
             //objR.getListaH().add(historia);//adición a la lista
             //JOptionPane.showMessageDialog(frmPrincipal, "Historia Clinica Registrada");
             if( !(objR.getListaH().get(objR.getListaH().size()-1).getDtsServicio() instanceof Laboratorios)){
                 try{
                     String msj = datos(objR.getListaH().size()-1);
                     con.EscribeDatos(msj, "RegistroHospital.txt");
+                    pdf.crear_PDF(historia);
+                    JOptionPane.showMessageDialog(frmPrincipal, "Historia Clinica Registrada");
+                    JOptionPane.showMessageDialog(frmPrincipal, "Se ha generado un recibo en pdf");
                 }catch(IOException ex){
                     JOptionPane.showMessageDialog(frmConsultar, "Error al abrir el archivo");
                 }   
@@ -419,9 +421,11 @@ public class Controlador implements ActionListener {
                 }*/
      }
      if(ae.getSource() ==frmExamenes.getBtnFinalizar()){
+         ArchPdf pdf = new ArchPdf();
          try{
             String msj = datos(objR.getListaH().size()-1);
             con.EscribeDatos(msj, "RegistroHospital.txt");
+            pdf.crear_PDF((objR.getListaH().get(objR.getListaH().size()-1)));
         }catch(IOException ex){
             JOptionPane.showMessageDialog(frmConsultar, "Error al abrir el archivo");
         }
