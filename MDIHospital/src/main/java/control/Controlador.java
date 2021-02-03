@@ -88,13 +88,13 @@ public class Controlador implements ActionListener {
             abrirVentana(frmRegistrar);
         }
         if(ae.getSource() == frmPrincipal.getOpcmConsultar()){
-            try {
+            //try {
                 frmConsultar.getTblConsulta().setModel(conexionbd.consultar());
                 //agregarDatos(frmConsultar.getTblConsulta());
-                agregarDatosPersistencia(frmConsultar.getTblConsulta());
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(frmPrincipal, "Error al abrir el archivo");
-            }
+                //agregarDatosPersistencia(frmConsultar.getTblConsulta());
+            //} catch (IOException ex) {
+              //  JOptionPane.showMessageDialog(frmPrincipal, "Error al abrir el archivo");
+            //}
             frmConsultar.getTxtTotal().setText(String.valueOf(this.total));
             abrirVentana(frmConsultar);
         }
@@ -430,6 +430,9 @@ public class Controlador implements ActionListener {
          ArchPdf pdf = new ArchPdf();
          try{
             String msj = datos(objR.getListaH().size()-1);
+            conexionbd.setObjH(objR.getListaH().get(objR.getListaH().size()-1));
+            String insertar = conexionbd.insertar();
+            System.out.println(insertar);
             con.EscribeDatos(msj, "RegistroHospital.txt");
             pdf.crear_PDF((objR.getListaH().get(objR.getListaH().size()-1)));
         }catch(IOException ex){
