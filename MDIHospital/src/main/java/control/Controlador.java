@@ -35,6 +35,7 @@ public class Controlador implements ActionListener {
     Laboratorios auxL;
     Conexion con;
     long total;
+    HistoriaClinicaDAO conexionbd;
 
     /**
      * Controlador básico, inicialización de las ventanas, variables y actionListener
@@ -66,6 +67,7 @@ public class Controlador implements ActionListener {
         auxH = new Hospitalizacion();
         auxL = new Laboratorios();
         this.total = 0;
+        this.conexionbd = new HistoriaClinicaDAO();
     }
     
     /**
@@ -87,6 +89,7 @@ public class Controlador implements ActionListener {
         }
         if(ae.getSource() == frmPrincipal.getOpcmConsultar()){
             try {
+                frmConsultar.getTblConsulta().setModel(conexionbd.consultar());
                 //agregarDatos(frmConsultar.getTblConsulta());
                 agregarDatosPersistencia(frmConsultar.getTblConsulta());
             } catch (IOException ex) {
@@ -360,6 +363,9 @@ public class Controlador implements ActionListener {
             if( !(objR.getListaH().get(objR.getListaH().size()-1).getDtsServicio() instanceof Laboratorios)){
                 try{
                     String msj = datos(objR.getListaH().size()-1);
+                    conexionbd.setObjH(historia);
+                    String insertar = conexionbd.insertar();
+                    System.out.println(insertar);
                     con.EscribeDatos(msj, "RegistroHospital.txt");
                     pdf.crear_PDF(historia);
                     JOptionPane.showMessageDialog(frmPrincipal, "Historia Clinica Registrada");

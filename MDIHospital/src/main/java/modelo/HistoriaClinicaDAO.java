@@ -71,7 +71,7 @@ public class HistoriaClinicaDAO {
             ConexionBD conexion = new ConexionBD();
             PreparedStatement consulta = null;
             conexion.conectar();
-            String comando = "insert into historias_clinicos values(?,?,?,?,?,?,?,?,?)";
+            String comando = "insert into historias_clinicas values(?,?,?,?,?,?,?,?,?)";
             consulta = conexion.getConexion().prepareStatement(comando);
             consulta.setString(1, objH.getNroHistoria());
             consulta.setString(2, objH.getFecha().toString());
